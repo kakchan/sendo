@@ -2,6 +2,7 @@
 
 angular.module('sendoApp')
   .controller('SettingsCtrl', function ($scope, User, Auth) {
+    $scope.$parent.page_title = "Settings";
     $scope.errors = {};
 
     $scope.changePassword = function(form) {

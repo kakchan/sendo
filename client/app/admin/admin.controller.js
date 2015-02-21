@@ -2,6 +2,7 @@
 
 angular.module('sendoApp')
   .controller('AdminCtrl', function ($scope, $http, Auth, User) {
+    $scope.$parent.page_title = "Admin";
 
     // Use the User $resource to fetch all users
     $scope.users = User.query();

@@ -2,6 +2,8 @@
 
 angular.module('sendoApp')
   .controller('SignupCtrl', function ($scope, Auth, $location) {
+    $scope.$parent.page_title = "Sign Up";
+
     $scope.user = {};
     $scope.errors = {};
 
