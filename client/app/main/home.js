@@ -5,7 +5,7 @@ angular.module('sendoApp')
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'app/main/home.html',
+        controller: 'HomeController'
       });
   });
