@@ -1,11 +1,7 @@
 'use strict';
 
-angular.module('sendoApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ui.router'
-])
+angular
+  .module('sendoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router' ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
       .otherwise('/');
@@ -13,7 +9,6 @@ angular.module('sendoApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
-
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -39,7 +34,6 @@ angular.module('sendoApp', [
       }
     };
   })
-
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {

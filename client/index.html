@@ -24,7 +24,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view=""></div>
+    <div class="row page">
+      <div class="col-sm-2">
+        <div ng-include="'components/navbar/navbar.html'"></div>
+      </div>
+      <div class="col-sm-10">
+        <div class="page-container">
+          <div ui-view=""></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -62,6 +71,7 @@
       <script src="app/account/signup/signup.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/admin/admin.js"></script>
+      <script src="app/admin/products/products.controller.js"></script>
       <script src="app/main/home.controller.js"></script>
       <script src="app/main/home.js"></script>
       <script src="app/main/root.controller.js"></script>
