@@ -11,14 +11,14 @@ User.find({}).remove(function() {
   User.create({
     provider: 'local',
     name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
+    email: 'test@laputan.me',
+    password: 'password'
   }, {
     provider: 'local',
     role: 'admin',
     name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
+    email: 'admin@laputan.me',
+    password: 'password'
   }, function() {
       console.log('finished populating users');
     }
