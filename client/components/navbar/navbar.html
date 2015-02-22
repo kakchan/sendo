@@ -1,9 +1,9 @@
 <div class="navbar navbar-default" ng-controller="NavbarController" role="navigation">
-  <div class="navbar-header">
-    <a href="/" class="navbar-brand">sendo</a>
+  <div>
+    <a href="/" class="sd-navbar-brand">sendo</a>
   </div>
-  <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-    <ul class="nav navbar-nav">
+  <div id="navbar-main">
+    <ul class="nav">
       <li ng-repeat="menu_item in menu" ng-show="menu_item.isShow()" ng-class="{active: isActive(menu_item.link)}">
         <a ng-href="{{menu_item.link}}">{{menu_item.title}}</a>
       </li>

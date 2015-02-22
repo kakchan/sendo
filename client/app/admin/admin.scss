@@ -1,1 +1,66 @@
 .trash { color:rgb(209, 91, 71); }
+
+.sd-navbar-brand {
+  color: #777777;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+  display: block;
+}
+
+.admin-page-head {
+  position: fixed;
+  z-index: 10;
+  width: inherit;
+  background-color: #fff;
+  opacity: .95;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0;
+  margin: 0;
+  .admin-page-head-left {
+    float: left;
+    .admin-page-title {
+      padding-top: 4px;
+      font-size: 18px;
+    }
+  }
+  .admin-page-head-right {
+    float: right;
+  }
+}
+
+.admin-page-body {
+  padding-top: 50px;
+}
+
+DIV.page > DIV.col-sm-2 {
+  padding-right: 0;
+}
+
+.page .page-container {
+  padding-left: 0;
+  padding-right: 0;
+  .page-container-view {
+    width: inherit;
+  }
+}
+
+.navbar {
+  border-radius: 0;
+  .navbar-nav {
+    float: none;
+  }
+}
+
+DIV.navbar-collapse {
+  padding: 0;
+  LI {
+    width: 100%;
+  }
+  LI A {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+  }
+}
