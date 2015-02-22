@@ -9,7 +9,7 @@ angular.module('sendoApp')
       { 'title': 'Collections', 'link': '/admin/collections', isShow: Auth.isAdmin },
       { 'title': "Blog Posts", "link": "/admin/blog_posts", isShow: Auth.isAdmin },
       { 'title': "Pages", "link": "/admin/pages", isShow: Auth.isAdmin },
-      { "title": "Navigations", "link": "/admin/navigations", isShow: Auth.isAdmin },
+      { "title": "Navigation", "link": "/admin/navigation", isShow: Auth.isAdmin },
       { "title": "Themes", "link": "/admin/themes", isShow: Auth.isAdmin },
       { "title": "Settings", "link": "/admin/settings", isShow: Auth.isAdmin }
     ];
