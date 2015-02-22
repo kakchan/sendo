@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendoApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginController', function ($scope, Auth, $location) {
     $scope.$parent.page_title = "Login";
 
     $scope.user = {};

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendoApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
+  .controller('SettingsController', function ($scope, User, Auth) {
     $scope.$parent.page_title = "Settings";
     $scope.errors = {};
 
