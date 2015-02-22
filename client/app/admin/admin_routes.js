@@ -43,11 +43,19 @@ angular.module('sendoApp')
         templateUrl: 'app/admin/users/users.html',
         controller: 'UsersController'
       })
+
+      /* Products */
       .state('admin/products', {
         url: '/admin/products',
         templateUrl: 'app/admin/products/products.html',
         controller: 'ProductsController'
       })
+      .state('admin/products/add', {
+        url: "/admin/products/add",
+        templateUrl: "app/admin/products/add_product.html",
+        controller: 'AddProductController'
+      })
+
       .state('admin/login', {
         url: '/admin/login',
         templateUrl: 'app/admin/login/login.html',

@@ -1,12 +1,43 @@
+/* COMMON */
+LABEL {
+  font-weight: normal;
+  margin-top: 10px;
+}
+
+A {
+  color: #666;
+}
+
+A:hover, A:focus {
+  color: #333;
+}
+
+/* Bootstrap Override */
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  color: #ffffff;
+  background-color: #333;
+  border-color: #666;
+}
+
+.btn-primary:hover {
+  background-color: #444;
+  border-color: #666;
+}
+
+/* Others */
 .trash { color:rgb(209, 91, 71); }
 
-.sd-navbar-brand {
+.sd-navbar-brand, .sd-navbar-brand:hover {
   color: #777777;
   padding: 15px;
   font-size: 18px;
   line-height: 20px;
   height: 50px;
   display: block;
+  text-decoration: none;
 }
 
 .admin-page-head {
