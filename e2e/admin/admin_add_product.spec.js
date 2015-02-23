@@ -40,7 +40,7 @@ describe('Admin Add Product Page View', function() {
     expect(browser.getTitle()).toEqual('Sendo | Products');
   });
 
-  iit('should create a new product when "Save" button is clicked', function() {
+  it('should create a new product when "Save" button is clicked', function() {
     this._add_product_page.titleFieldEl.sendKeys("Product 1");
     this._add_product_page.descriptionFieldEl.sendKeys("Product Description 1");
     this._add_product_page.pageTitleFieldEl.sendKeys("Product 1 - Page Title");
