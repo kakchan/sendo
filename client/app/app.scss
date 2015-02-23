@@ -1,5 +1,10 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $fa-font-path: "/bower_components/font-awesome/fonts";
+@font-face {
+  font-family: 'Helvetica Neue Ultra Light';
+  src: url('/assets/fonts/HelveticaNeue-UltraLight.otf');
+}
+
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
@@ -20,4 +25,9 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'admin/admin.scss';
 @import 'admin/login/login.scss';
 @import 'main/home.scss';
+@import '../components/navbar/navbar';
 // endinjector
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

@@ -4,10 +4,9 @@
   </div>
   <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
     <ul class="nav navbar-nav">
-      <li ng-repeat="menu_item in menu" ng-show="menu_item.isShow()" ng-class="{active: isActive(menu_item.link)}">
-        <a ng-href="{{menu_item.link}}">{{menu_item.title}}</a>
+      <li ng-repeat="menu_item in menu" ng-show="menu_item.isShow()" class="navbar-item" ng-class="{active: isActive(menu_item.link)}">
+        <a class="fa fa-2x fa-{{menu_item.image_name}}" ng-href="{{menu_item.link}}">{{menu_item.title}}</a>
       </li>
-      <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/users')}"><a href="/admin/users">Users</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

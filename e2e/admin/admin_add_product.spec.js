@@ -34,4 +34,8 @@ describe('Admin Add Product Page View', function() {
     this._add_product_page.pageTitleLinkEl.click();
     expect(browser.getTitle()).toEqual('Sendo | Products');
   });
+
+  it('should create a new product when "Save" button is clicked', function() {
+
+  })
 });
