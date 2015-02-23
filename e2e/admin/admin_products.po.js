@@ -4,13 +4,10 @@ var AdminProductsPage = function() {
   this.pageContainerEl = element(by.css('.page-container'));
 
   this.pageTitleEl = this.pageContainerEl.element(by.css('.admin-page-title'));
-  /*
-   this.h1El = this.heroEl.element(by.css('h1'));
-   this.imgEl = this.heroEl.element(by.css('img'));
-   */
+  this.addProductButtonEl = this.pageContainerEl.element(by.css('.btn-add-product'));
 };
 
-AdminProductsPage.prototype.go_to_admin_products_page = function() {
+AdminProductsPage.prototype.visit = function() {
   var login_page = require('./../admin/admin_login.po.js');
   login_page.login();
 

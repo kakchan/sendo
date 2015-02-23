@@ -1,5 +1,9 @@
 'use strict';
 
+window.CONFIG = {
+  APP_NAME: "Sendo"
+};
+
 angular
   .module('sendoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router' ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -23,7 +27,7 @@ angular
       // Intercept 401s and redirect you to login
       responseError: function(response) {
         if(response.status === 401) {
-          $location.path('/login');
+          $location.path('/admin');
           // remove any stale tokens
           $cookieStore.remove('token');
           return $q.reject(response);
@@ -39,7 +43,7 @@ angular
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
-          $location.path('/login');
+          $location.path('/admin');
         }
       });
     });

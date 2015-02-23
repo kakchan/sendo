@@ -2,7 +2,7 @@
 
 angular.module('sendoApp')
   .controller('LoginController', function ($scope, Auth, $location) {
-    $scope.$parent.page_title = "Login";
+    $scope.$parent.page_title = CONFIG.APP_NAME + " | Login";
 
     $scope.user = {};
     $scope.errors = {};
