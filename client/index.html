@@ -23,13 +23,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="row page">
-      <div class="col-xs-2">
-        <div ng-include="'components/navbar/navbar.html'"></div>
-      </div>
-      <div class="col-xs-10 page-container">
-        <div class="page-container-view" ui-view=""></div>
-      </div>
+    <div class="page">
+      <div ng-include="'components/navbar/navbar.html'"></div>
+      <div class="page-container" ui-view=""></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
