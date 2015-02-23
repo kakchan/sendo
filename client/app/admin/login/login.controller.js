@@ -17,9 +17,10 @@ angular.module('sendoApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $location.path('/admin/products');
         })
         .catch( function(err) {
+          $location.path('/admin');
           $scope.errors.other = err.message;
         });
       }

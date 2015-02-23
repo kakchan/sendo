@@ -31,7 +31,7 @@ angular.module('sendoApp')
 
     $scope.logout = function() {
       Auth.logout();
-      $location.path('/admin/login');
+      $location.path('/admin');
     };
 
     $scope.isActive = function(route) {
