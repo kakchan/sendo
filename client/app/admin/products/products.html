@@ -7,5 +7,9 @@
   </div>
 </div>
 <div class="admin-page-body">
-  Products
+  <div class="list-container">
+    <div class="product-list-row" ng-repeat="product in products">
+      {{product.title}}
+    </div>
+  </div>
 </div>

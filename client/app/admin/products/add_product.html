@@ -5,17 +5,17 @@
     </div>
   </div>
   <div class="admin-page-head-right">
-    <div class="btn btn-primary">Save</div>
+    <div class="btn btn-primary btn-save" ng-click="save_click()">Save</div>
   </div>
 </div>
 <div class="admin-page-body">
   <label for="product_title">Title</label>
-  <input class="form-control" type="text" id="product_title"/>
+  <input class="form-control" type="text" id="product_title" ng-model="product.title"/>
   <label for="product_description">Description</label>
-  <input class="form-control" type="text" id="product_description"/>
+  <input class="form-control" type="text" id="product_description" ng-model="product.description"/>
 
   <label for="page_title">Page Title</label>
-  <input class="form-control" type="text" id="page_title"/>
+  <input class="form-control" type="text" id="page_title" ng-model="product.page_title"/>
   <label for="meta_description">Meta Description</label>
-  <input class="form-control" type="text" id="meta_description"/>
+  <input class="form-control" type="text" id="meta_description" ng-model="product.meta_description"/>
 </div>

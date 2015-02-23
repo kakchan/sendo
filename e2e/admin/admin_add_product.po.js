@@ -10,6 +10,8 @@ var AdminAddProductPage = function() {
   this.descriptionFieldEl = this.pageContainerEl.element(by.id('product_description'));
   this.pageTitleFieldEl = this.pageContainerEl.element(by.id('page_title'));
   this.metaDescriptionFieldEl = this.pageContainerEl.element(by.id('meta_description'));
+
+  this.saveButtonEl = this.pageContainerEl.element(by.css('.btn-save'));
 };
 
 AdminAddProductPage.prototype.visit = function() {

@@ -4,6 +4,8 @@ describe('Admin Add Product Page View', function() {
   beforeEach(function() {
     this._add_product_page = require('./../admin/admin_add_product.po.js');
     this._add_product_page.visit();
+
+    this._products_page = require('./../admin/admin_products.po.js');
   });
 
   it('initial elements should display correctly', function() {
@@ -27,6 +29,9 @@ describe('Admin Add Product Page View', function() {
 
     // should contain Meta Description field
     expect(this._add_product_page.metaDescriptionFieldEl.isDisplayed()).toBe(true);
+
+    // should contain Save button
+    expect(this._add_product_page.saveButtonEl.isDisplayed()).toBe(true);
   });
 
   it('should redirect back to "Products" page after "Products" link is clicked', function() {
@@ -35,7 +40,18 @@ describe('Admin Add Product Page View', function() {
     expect(browser.getTitle()).toEqual('Sendo | Products');
   });
 
-  it('should create a new product when "Save" button is clicked', function() {
+  iit('should create a new product when "Save" button is clicked', function() {
+    this._add_product_page.titleFieldEl.sendKeys("Product 1");
+    this._add_product_page.descriptionFieldEl.sendKeys("Product Description 1");
+    this._add_product_page.pageTitleFieldEl.sendKeys("Product 1 - Page Title");
+    this._add_product_page.metaDescriptionFieldEl.sendKeys("Product 1 - Meta Description");
 
-  })
+    this._add_product_page.saveButtonEl.click();
+
+    // product should be saved
+
+    this._add_product_page.pageTitleLinkEl.click();
+    expect(browser.getTitle()).toEqual('Sendo | Products');
+    expect(this._products_page.productRowEls.count()).toBe(this._products_page.product_count+1);
+  });
 });
