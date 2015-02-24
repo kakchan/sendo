@@ -28,6 +28,12 @@ A:hover, A:focus {
 }
 
 /* Others */
+h4.section-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+  padding-top: 15px;
+}
+
 .trash { color:rgb(209, 91, 71); cursor: pointer; }
 
 .navbar-brand {
