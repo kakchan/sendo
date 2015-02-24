@@ -2,12 +2,23 @@
 
 angular.module('sendoApp')
   .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
-    var currentUser = {};
-    if($cookieStore.get('token')) {
-      currentUser = User.get();
-    }
+    var currentUser;
+    var reload_auth = function() {
+      currentUser = {};
+      if($cookieStore.get('token')) {
+        currentUser = User.get();
+      }
+    };
+
+
+    var init = function() {
+      reload_auth();
+    };
+
+    init();
 
     return {
+      reload_auth: reload_auth,
 
       /**
        * Authenticate user and save token
