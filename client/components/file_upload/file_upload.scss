@@ -1,0 +1,39 @@
+.photo-thumbnail-container {
+  padding: 10px;
+  border: 1px solid #ccc;
+  IMG.photo-thumbnail {
+    margin: 5px;
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+  }
+}
+
+.sd-file-upload {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  /* Button */
+  .file-upload-button {
+    display: inline-block;
+    position: relative;
+
+    .file-upload-field {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      margin-top: -6px;
+      margin-left: -12px;
+    }
+    .file-upload-button-text {
+      cursor: pointer;
+    }
+  }
+
+  /* Thumbnail */
+  .photo-thumbnail-container {
+    margin-top: 10px;
+  }
+}

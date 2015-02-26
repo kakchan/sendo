@@ -28,6 +28,10 @@ A:hover, A:focus {
 }
 
 /* Others */
+.page-container {
+  padding-top: 50px;
+}
+
 h4.section-header {
   border-bottom: 1px solid #ccc;
   padding-bottom: 8px;
@@ -36,9 +40,7 @@ h4.section-header {
 
 .trash { color:rgb(209, 91, 71); cursor: pointer; }
 
-.navbar-brand {
-  font-size: 22px;
-}
+.navbar-brand { font-size: 22px; }
 
 .admin-page-head {
   position: fixed;

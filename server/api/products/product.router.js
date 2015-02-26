@@ -19,3 +19,17 @@ exports.create = function( req, res ) {
     res.json(200, new_product );
   } );
 };
+
+exports.upload_photo = function( req, res ) {
+  var files = [];
+  if (req.files) {
+    for ( var key in req.files ) {
+      var file = req.files[key];
+      files.push( {
+        filename: file.name,
+        size: file.size
+      } );
+    }
+  }
+  res.json( { files: files } );
+};

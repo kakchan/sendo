@@ -1,0 +1,10 @@
+<div>
+  <div class="file-upload-button btn btn-default">
+    <input class="file-upload-field" type="file"/>
+    <div class="file-upload-button-text">Choose Image</div>
+  </div>
+
+  <div class="photo-thumbnail-container clearfix" ng-show="images.length > 0">
+    <img class="photo-thumbnail" src="/uploads/photos/products/{{image.filename}}" ng-repeat="image in images"/>
+  </div>
+</div>

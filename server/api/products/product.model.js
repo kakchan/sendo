@@ -3,6 +3,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var ProductImage = new Schema({
+  filename: String,
+  size: Number
+});
+
 var ProductSchema = new Schema({
   shop_id: { type: Number, index: true },
   title: String,
@@ -10,7 +15,7 @@ var ProductSchema = new Schema({
   page_title: String,
   meta_description: String,
   handle: String,
-  images: [],
+  images: [ProductImage],
   created_at: Date,
   updated_at: Date
 });
