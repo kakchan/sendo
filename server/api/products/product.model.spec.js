@@ -23,13 +23,6 @@ describe('Product Model', function() {
     });
   });
 
-  it('should begin with no products', function(done) {
-    Product.find({}, function(err, products) {
-      products.should.have.length(0);
-      done();
-    });
-  });
-
   it('should fail when saving a duplicate product', function(done) {
     product.save(function() {
       var productDup = new Product(product);
