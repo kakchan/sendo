@@ -43,6 +43,13 @@ module.exports = function (grunt) {
           debug: true
         }
       },
+      test: {
+        options: {
+          port: process.env.PORT || 9877,
+          script: 'server/app.js',
+          debug: true
+        }
+      },
       prod: {
         options: {
           script: 'dist/server/app.js'
@@ -629,7 +636,7 @@ module.exports = function (grunt) {
         'injector',
         'wiredep',
         'autoprefixer',
-        'express:dev',
+        'express:test',
         'protractor'
       ]);
     }

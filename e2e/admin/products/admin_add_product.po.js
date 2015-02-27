@@ -8,6 +8,11 @@ var AdminAddProductPage = function() {
 
   this.titleFieldEl = this.pageContainerEl.element(by.id('product_title'));
   this.descriptionFieldEl = this.pageContainerEl.element(by.id('product_description'));
+
+  // Photo
+  this.uploadFileInputFieldEl = this.pageContainerEl.element(by.css('.file-upload-field'));
+  this.photoThumbnailContainerEl = this.pageContainerEl.element(by.css('.photo-thumbnail-container'));
+
   this.pageTitleFieldEl = this.pageContainerEl.element(by.id('page_title'));
   this.metaDescriptionFieldEl = this.pageContainerEl.element(by.id('meta_description'));
 
@@ -15,7 +20,7 @@ var AdminAddProductPage = function() {
 };
 
 AdminAddProductPage.prototype.visit = function() {
-  var products_page = require('./../admin/admin_products.po.js');
+  var products_page = require('./admin_products.po.js');
   products_page.visit();
   products_page.addProductButtonEl.click();
 };

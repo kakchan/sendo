@@ -2,8 +2,7 @@
 
 var path = require('path');
 var _ = require('lodash');
-var fs = require('fs');
-var mkdirp = require('mkdirp');
+var fs = require('fs.extra');
 var async = require('async');
 
 function requiredProcessEnv(name) {
@@ -56,15 +55,14 @@ var config = _.merge(
 // upload paths
 config.product_photo_path = config.upload_files_path + '/photos/products';
 
-var is_folder_exists = function(path, done) {
-  fs.exists( path, function( is_exists ) {
-    done( null, is_exists );
+var remove_folder = function(path, done) {
+  fs.rmrf( path, function( err ) {
+    done( err );
   } );
 };
 
-var create_folder = function(path, exists, done) {
-  if ( !exists ) { return; }
-  mkdirp(path, function (err) {
+var create_folder = function(path, done) {
+  fs.mkdirp(path, function (err) {
     if (err) {
       console.error(err);
       done( err );
@@ -75,12 +73,19 @@ var create_folder = function(path, exists, done) {
   });
 };
 
-var create_file_path = function( path ) {
+var recreate_file_path = function( path ) {
   async.waterfall( [
-    is_folder_exists.bind( null, path )
-  ], create_folder.bind( null, path ) );
+    remove_folder.bind( null, path ),
+    create_folder.bind( null, path )
+  ], function() {
+    console.log("Completed: create_file_path")
+  } );
 };
 
-[ "product_photo_path" ].forEach( create_file_path);
+if ( config.env === "development" || config.env === "test" ) {
+  [ "product_photo_path" ].forEach( function(fn_name){
+    recreate_file_path(config[fn_name]);
+  } );
+}
 
 module.exports = config;

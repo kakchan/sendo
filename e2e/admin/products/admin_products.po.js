@@ -9,7 +9,7 @@ var AdminProductsPage = function() {
 };
 
 AdminProductsPage.prototype.visit = function() {
-  var login_page = require('./../admin/admin_login.po.js');
+  var login_page = require('../login/admin_login.po.js');
   login_page.login();
 
   var me = this;

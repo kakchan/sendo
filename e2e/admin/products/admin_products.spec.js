@@ -4,7 +4,7 @@ describe('Admin Products Page View', function() {
   var products_page;
 
   beforeEach(function() {
-    products_page = require('./../admin/admin_products.po.js');
+    products_page = require('./admin_products.po.js');
     products_page.visit();
   });
 

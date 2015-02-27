@@ -3,7 +3,7 @@
 describe('Admin Login Page View', function() {
   beforeEach(function() {
     browser.get('/admin');
-    this._login_page = require('./../admin/admin_login.po.js');
+    this._login_page = require('./admin_login.po.js');
   });
 
   it('initial elements should display correctly', function() {

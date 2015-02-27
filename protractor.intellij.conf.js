@@ -18,8 +18,8 @@ exports.config = {
 
   // list of files / patterns to load in the browser
   specs: [
-//    'e2e/**/*.spec.js'
-//    'e2e/admin/login/admin_login.spec.js'
+    'e2e/**/*.spec.js'
+//    'e2e/admin/admin_login.spec.js'
 //    'e2e/admin/admin_products.spec.js'
 //    'e2e/admin/admin_add_product.spec.js'
   ],
@@ -33,7 +33,6 @@ exports.config = {
   // https://code.google.com/p/selenium/wiki/DesiredCapabilities
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
-/*
   capabilities: {
     'browserName': 'chrome',
     "chromeOptions": {
@@ -42,33 +41,6 @@ exports.config = {
       extensions: []
     }
   },
-*/
-
-  multiCapabilities: [
-    {
-      'browserName': 'chrome',
-      "chromeOptions": {
-        binary: "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome",
-        args: [],
-        extensions: []
-      },
-      specs: [
-        'e2e/admin/products/admin_products.spec.js',
-        'e2e/admin/products/admin_add_product.spec.js'
-      ]
-    },
-    {
-      'browserName': 'chrome',
-      "chromeOptions": {
-        binary: "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome",
-        args: [],
-        extensions: []
-      },
-      specs: [
-        'e2e/admin/login/admin_login.spec.js'
-      ]
-    }
-  ],
 
   // ----- The test framework -----
   //
