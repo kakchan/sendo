@@ -6,7 +6,7 @@
   </div>
 
   <div class="photo-thumbnails-container clearfix" ng-class="{ 'drag-photo': dragPhoto }">
-    <div class="photo-thumbnails-background-text" ng-show="images.length === 0">Click "Add Image" or Drag your images here</div>
+    <div class="photo-thumbnails-background-text" ng-show="images.length === 0 && !showAddUploadImage">Click "Add Image" or Drag your images here</div>
     <div class="photo-thumbnail" ng-repeat="image in images">
       <img class="photo-thumbnail-image" src="/uploads/photos/products/{{image.filename}}"/>
     </div>
