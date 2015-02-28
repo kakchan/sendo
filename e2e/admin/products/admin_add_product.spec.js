@@ -57,16 +57,16 @@ describe('Admin Add Product Page View', function() {
     expect(this._products_page.productRowEls.count()).toBe(this._products_page.product_count+1);
   });
 
-  it('should be able to upload photo', function() {
-    expect(this._add_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(false);
-    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail")).count()).toBe(0);
+  iit('should be able to upload photo', function() {
+    expect(this._add_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
+    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);
 
     this._add_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
     expect(this._add_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail")).count()).toBe(1);
+    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
 
     this._add_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
     expect(this._add_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail")).count()).toBe(2);
+    expect(this._add_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
   });
 });

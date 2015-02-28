@@ -1,12 +1,10 @@
-.photo-thumbnail-container {
-  padding: 10px;
-  border: 1px solid #ccc;
-  IMG.photo-thumbnail {
-    margin: 5px;
-    max-width: 100px;
-    max-height: 100px;
-    float: left;
-  }
+@mixin vertical-align {
+  display: -moz-box;
+  display:-webkit-box;
+  -moz-box-pack: center;
+  -webkit-box-pack: center;
+  -moz-box-align: center;
+  -webkit-box-align: center;
 }
 
 .sd-file-upload {
@@ -33,7 +31,55 @@
   }
 
   /* Thumbnail */
-  .photo-thumbnail-container {
+  .photo-thumbnails-container {
+    position: relative;
     margin-top: 10px;
+    min-height: 122px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 0 5px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 20px;
+
+    .photo-thumbnails-background-text {
+      position: absolute;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      padding: 10px;
+      @include vertical-align;
+    }
+
+    .photo-thumbnail, .photo-thumbnail-add-upload-images {
+      height: 100px;
+      width: 100px;
+      margin: 10px 5px;
+      text-align: center;
+      border-radius: 2px;
+      float:left;
+    }
+
+    .photo-thumbnail {
+      .photo-thumbnail-image {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+
+    .photo-thumbnail-add-upload-images {
+      border: 1px dashed #ccc;
+      color: #ccc;
+      font-size: 16px;
+      .photo-thumbnail-add-upload-images-text {
+        height: 100%;
+        width: 100%;
+        @include vertical-align;
+      }
+    }
+
+    &.drag-photo {
+      border-color: red;
+    }
   }
 }

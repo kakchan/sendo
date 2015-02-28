@@ -21,6 +21,8 @@
   }
 
   .navbar-collapse.collapse {
+    overflow: hidden;
+    height: 50px;
     border-top: 0;
     display: block!important;
   }

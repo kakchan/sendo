@@ -10,9 +10,10 @@ angular.module('sendoApp')
       Product.save($scope.product);
     };
 
-    $scope.file_upload_changed = function(form_data) {
+    $scope.file_upload_changed = function(form_data, callback) {
       Product.upload_photo({}, form_data, function(resp) {
         $scope.product.images = $scope.product.images.concat(resp.files);
+        callback && callback();
       });
     };
   });

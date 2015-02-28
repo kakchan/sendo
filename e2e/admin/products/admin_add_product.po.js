@@ -11,7 +11,7 @@ var AdminAddProductPage = function() {
 
   // Photo
   this.uploadFileInputFieldEl = this.pageContainerEl.element(by.css('.file-upload-field'));
-  this.photoThumbnailContainerEl = this.pageContainerEl.element(by.css('.photo-thumbnail-container'));
+  this.photoThumbnailContainerEl = this.pageContainerEl.element(by.css('.photo-thumbnails-container'));
 
   this.pageTitleFieldEl = this.pageContainerEl.element(by.id('page_title'));
   this.metaDescriptionFieldEl = this.pageContainerEl.element(by.id('meta_description'));

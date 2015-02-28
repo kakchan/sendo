@@ -1,10 +1,19 @@
 <div>
   <div class="file-upload-button btn btn-default">
     <input accept="image/*" class="file-upload-field" type="file"/>
-    <div class="file-upload-button-text">Choose Image</div>
+    <div class="file-upload-button-text" ng-show="uploading">Uploading...</div>
+    <div class="file-upload-button-text" ng-show="!uploading">Add Image</div>
   </div>
 
-  <div class="photo-thumbnail-container clearfix" ng-show="images.length > 0">
-    <img class="photo-thumbnail" src="/uploads/photos/products/{{image.filename}}" ng-repeat="image in images"/>
+  <div class="photo-thumbnails-container clearfix" ng-class="{ 'drag-photo': dragPhoto }">
+    <div class="photo-thumbnails-background-text" ng-show="images.length === 0">Click "Add Image" or Drag your images here</div>
+    <div class="photo-thumbnail" ng-repeat="image in images">
+      <img class="photo-thumbnail-image" src="/uploads/photos/products/{{image.filename}}"/>
+    </div>
+    <div ng-show="showAddUploadImage" class="photo-thumbnail-add-upload-images" ng-class="{ 'show-upload-image-message': dragPhoto}">
+      <span class="photo-thumbnail-add-upload-images-text">
+        Upload Image
+      </span>
+    </div>
   </div>
 </div>
