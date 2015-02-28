@@ -6,6 +6,7 @@ angular.module('sendoApp')
       restrict: 'C',
       scope: {
         onFileChanged: "=",
+        onFileDelete: "=",
         images: "="
       },
       replace: true,
@@ -53,6 +54,14 @@ angular.module('sendoApp')
             upload_files( ev.originalEvent.dataTransfer.files );
           }
         } );
+
+        /* Event Handlers */
+        $scope.delete_photo_click = function(index) {
+          var image = $scope.images[index];
+          $scope.onFileDelete(image, function() {
+            $scope.images.splice(index,1);
+          });
+        };
       }
     }
   });

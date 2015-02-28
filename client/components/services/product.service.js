@@ -14,6 +14,12 @@ angular.module('sendoApp')
           params: {
             controller: 'upload_photo'
           }
+        },
+        delete_photo: {
+          method: "DELETE",
+          params: {
+            controller: "delete_photo"
+          }
         }
       }
     );

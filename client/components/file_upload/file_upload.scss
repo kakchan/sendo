@@ -35,7 +35,7 @@
   .photo-thumbnails-container {
     position: relative;
     margin-top: 10px;
-    min-height: 122px;
+    min-height: 135px;
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 0 5px;
@@ -63,8 +63,20 @@
 
     .photo-thumbnail {
       .photo-thumbnail-image {
+        border-radius: 2px;
         max-width: 100px;
         max-height: 100px;
+      }
+
+      .photo-thumbnail-trash {
+        font-size: 14px;
+        float: right;
+        margin-top: 3px;
+        margin-right: 1px;
+        cursor: pointer;
+      }
+      .photo-thumbnail-trash:hover {
+        color: #666;
       }
     }
 

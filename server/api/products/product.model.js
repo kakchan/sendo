@@ -26,7 +26,7 @@ module.exports = mongoose.model( "Product", ProductSchema, "Products" );
  * Validations
  */
 
-// Validate empty email
+// Validate empty title
 ProductSchema
   .path('title')
   .validate(function(title) {

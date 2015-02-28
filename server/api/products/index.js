@@ -20,5 +20,6 @@ var upload_product_photo = function() {
 router.get('/', auth.hasRole('admin'), ProductRouter.index);
 router.post('/', auth.hasRole('admin'), ProductRouter.create);
 router.post('/upload_photo', auth.hasRole('admin'), upload_product_photo(), ProductRouter.upload_photo);
+router.delete('/delete_photo', auth.hasRole('admin'), ProductRouter.delete_photo );
 
 module.exports = router;

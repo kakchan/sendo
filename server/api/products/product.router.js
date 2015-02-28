@@ -1,4 +1,6 @@
 var Product = require('./product.model');
+var fs = require('fs');
+var config = require('../../config/environment');
 
 exports.index = function(req, res) {
   Product.find({}, function (err, products) {
@@ -32,4 +34,17 @@ exports.upload_photo = function( req, res ) {
     }
   }
   res.json( { files: files } );
+};
+
+exports.delete_photo = function( req, res ) {
+  var file_name = req.query.filename;
+  if (!file_name) {
+    return res.send(500);
+  }
+  fs.unlink( config.product_photo_path + "/" + file_name, function(err) {
+    if(err) {
+      return res.send(500, err);
+    }
+    res.json(200);
+  } );
 };

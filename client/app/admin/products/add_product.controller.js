@@ -16,4 +16,10 @@ angular.module('sendoApp')
         callback && callback();
       });
     };
+
+    $scope.file_delete = function(photo, callback) {
+      Product.delete_photo( {filename: photo.filename}, {}, function( resp ) {
+        callback && callback();
+      } );
+    };
   });
