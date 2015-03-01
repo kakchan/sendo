@@ -12,19 +12,19 @@ Our unit tests covered both client and server sides.
 
 To run client side unit tests
 ```shell
-	# grunt test:client
+	grunt test:client
 ```
-**Note**: You can also execute your unit tests in Webstorm with Karma Plugin, make sure set the environment variable **NODE_ENV** to **test**
+**Note**: If you would like to use **Webstorm** with Karma Plugin, make sure set the environment variable **NODE_ENV** to **test**
 
 To run server side unit tests
 ```shell
-	# grunt test:server
+	grunt test:server
 ```
-**Note**: You can also execute your unit tests in Webstorm with Mocha Plugin, make sure set the environment variable **NODE_ENV** to **test**
+**Note**: If you would like to use **Webstorm** with Mocha Plugin, make sure set the environment variable **NODE_ENV** to **test**
 
 The following command is to run both client/server unit tests
 ```shell
-	# grunt test
+	grunt test
 ```
 
 ### End-to-End Tests
@@ -40,5 +40,10 @@ To setup e2e testing, you will need to update your Chrome binary path of the pro
 
 To run End-to-End Tests
 ```shell
-	# grunt test:e2e
+	grunt test:e2e
 ```
+
+**Note**: If you would like to use **Webstorm** for e2e test, please follow the following instructions:
+
+1. set "**Javascript files**" to **node_modules/grunt-protractor-runner/node_modules/protractor/lib/cli.js** and 
+2. set "**Application Parameters**" to  **protractor.intellij.conf.js**
