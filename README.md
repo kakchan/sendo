@@ -4,7 +4,7 @@ Sendo is an open source Node.js ecommerce platform. It is developed with MongoDB
 
 
 ## Setup Local Development Environment
-##### Unit Tests
+### Unit Tests
 Our unit tests covered both client and server sides.
 
 - **Karma** is used for the **client** side unit testing
@@ -27,7 +27,7 @@ The following command is to run both client/server unit tests
 	# grunt test
 ```
 
-##### End-to-End Tests
+### End-to-End Tests
 To setup e2e testing, you will need to update your Chrome binary path of the protractor.conf.js
 
 ```javascript
