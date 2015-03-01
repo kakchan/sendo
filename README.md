@@ -10,13 +10,13 @@ Our unit tests covered both client and server sides.
 - **Karma** is used for the **client** side unit testing
 - **Mocha** is used for the **server** side unit testing
 
-To run client side unit tests
+To run **client side** unit tests
 ```shell
 	grunt test:client
 ```
 **Note**: If you would like to use **Webstorm** with Karma Plugin, make sure set the environment variable **NODE_ENV** to **test**
 
-To run server side unit tests
+To run **server side** unit tests
 ```shell
 	grunt test:server
 ```
