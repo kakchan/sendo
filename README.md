@@ -1,6 +1,6 @@
 # Sendo [![Build Status](https://travis-ci.org/kakchan/sendo.svg?branch=master)](http://travis-ci.org/kakchan/sendo)
 
-Sendo is an open source Node.js ecommerce platform.
+Sendo is an open source Node.js ecommerce platform. It is developed with MongoDB, Express and Angular.
 
 
 ## Setup Local Development Environment
