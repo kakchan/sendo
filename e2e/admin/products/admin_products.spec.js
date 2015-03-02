@@ -8,11 +8,13 @@ describe('Admin Products Page View', function() {
     products_page.visit();
   });
 
-  it('initial elements should display correctly', function() {
-    // page title should be "Sendo | Products"
-    expect(browser.getTitle()).toEqual('Sendo | Products');
+  describe("Initialize", function() {
+    it('should display correctly', function() {
+      // page title should be "Sendo | Products"
+      expect(browser.getTitle()).toEqual('Sendo | Products');
 
-    // should include "Products" admin page header
-    expect(products_page.pageTitleEl.getText()).toBe("Products");
+      // should include "Products" admin page header
+      expect(products_page.pageTitleEl.getText()).toBe("Products");
+    });
   });
 });

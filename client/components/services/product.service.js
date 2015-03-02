@@ -5,22 +5,21 @@ angular.module('sendoApp')
     return $resource('/api/products/:id/:controller', {
       id: '@_id'
     }, {
-        upload_photo: {
-          method: 'POST',
-          headers: {
-            'Content-Type': undefined,
-            enctype:'multipart/form-data'
-          },
-          params: {
-            controller: 'upload_photo'
-          }
+      upload_photo: {
+        method: 'POST',
+        headers: {
+          'Content-Type': undefined,
+          enctype:'multipart/form-data'
         },
-        delete_photo: {
-          method: "DELETE",
-          params: {
-            controller: "delete_photo"
-          }
+        params: {
+          controller: 'upload_photo'
+        }
+      },
+      delete_photo: {
+        method: "DELETE",
+        params: {
+          controller: "delete_photo"
         }
       }
-    );
+    } );
   });

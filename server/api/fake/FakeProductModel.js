@@ -4,7 +4,11 @@ var FakeProductModel = function() {
 };
 
 FakeProductModel.find = function(query, callback) {
-  callback( null, [] );
+  callback();
+};
+
+FakeProductModel.findById = function(query, callback) {
+  callback();
 };
 
 FakeProductModel.prototype.save = function( callback ) {

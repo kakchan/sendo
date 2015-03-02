@@ -82,7 +82,7 @@ var recreate_file_path = function( path ) {
   } );
 };
 
-if ( config.env === "development" || config.env === "test" ) {
+if ( config.env === "test" ) {
   [ "product_photo_path" ].forEach( function(fn_name){
     recreate_file_path(config[fn_name]);
   } );

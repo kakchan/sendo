@@ -19,10 +19,16 @@ var AdminAddProductPage = function() {
   this.saveButtonEl = this.pageContainerEl.element(by.css('.btn-save'));
 };
 
-AdminAddProductPage.prototype.visit = function() {
+AdminAddProductPage.prototype.visit_by_clicking_add_product = function() {
   var products_page = require('./admin_products.po.js');
   products_page.visit();
   products_page.addProductButtonEl.click();
+};
+
+AdminAddProductPage.prototype.visit_by_click_product = function( index ) {
+  var products_page = require('./admin_products.po.js');
+  products_page.visit();
+  products_page.productRowEls.get(index).click();
 };
 
 module.exports = new AdminAddProductPage();

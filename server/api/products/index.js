@@ -16,7 +16,7 @@ var upload_product_photo = function() {
   });
 };
 
-
+router.get('/:id', auth.hasRole('admin'), ProductRouter.get);
 router.get('/', auth.hasRole('admin'), ProductRouter.index);
 router.post('/', auth.hasRole('admin'), ProductRouter.create);
 router.post('/upload_photo', auth.hasRole('admin'), upload_product_photo(), ProductRouter.upload_photo);

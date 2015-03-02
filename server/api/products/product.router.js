@@ -11,6 +11,18 @@ exports.index = function(req, res) {
   });
 };
 
+exports.get = function( req, res ) {
+  if ( !req.params.id ) {
+    return res.send(500, "'id' is required");
+  }
+  Product.findById( req.params.id, function(err, product) {
+    if (err){
+      return res.send(500, err);
+    }
+    res.json(200, product);
+  });
+};
+
 exports.create = function( req, res ) {
   var data = req.body;
   var product = new Product(data);

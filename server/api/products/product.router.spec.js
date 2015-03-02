@@ -13,6 +13,7 @@ describe('Product Router', function() {
     FakeProductModel = sinon.spy(FakeProductModel);
     FakeProductModel.prototype.save = sinon.stub(FakeProductModel.prototype, "save");
     FakeProductModel.find = sinon.stub(FakeProductModel, "find");
+    FakeProductModel.findById = sinon.stub(FakeProductModel, "findById");
 
     ProductRouter.__set__( "Product", FakeProductModel );
 
@@ -29,6 +30,7 @@ describe('Product Router', function() {
     FakeProductModel.reset();
     FakeProductModel.prototype.save.restore();
     FakeProductModel.find.restore();
+    FakeProductModel.findById.restore();
 
     // File System
     FakeFileSystem.reset();
@@ -70,9 +72,66 @@ describe('Product Router', function() {
     });
   } );
 
+  describe( "get endpoint", function() {
+    // Get
+    it('should get specific product with success response', function( done ) {
+      // Given
+      var req = { params: { id: "product_1" } };
+      var res = { send: sinon.spy(), json: sinon.spy() };
+      var product = {
+        id: "product_1",
+        title: "Product 1",
+        description: "Product 1 Description",
+        page_title: "Product 1 Page Title",
+        meta_description: "Product 1 Meta Description"
+      };
+      FakeProductModel.findById.yields(null, product );
+
+      // When
+      ProductRouter.get( req, res );
+
+      // Then
+      res.json.calledWith(200, product).should.equal(true);
+      res.send.called.should.equal(false);
+
+      done();
+    });
+
+    it('should fail if product id not found', function( done ) {
+      // Given
+      var req = { params: { id: "product_1" } };
+      var res = { send: sinon.spy(), json: sinon.spy() };
+      FakeProductModel.findById.yields("Product Not Found");
+
+      // When
+      ProductRouter.get( req, res );
+
+      // Then
+      res.json.called.should.equal(false);
+      res.send.calledWith(500,"Product Not Found").should.equal(true);
+
+      done();
+    });
+
+    it('should fail if product id is not provided', function( done ) {
+      // Given
+      var req = { params: {} };
+      var res = { send: sinon.spy(), json: sinon.spy() };
+
+      // When
+      ProductRouter.get( req, res );
+
+      // Then
+      res.json.called.should.equal(false);
+      res.send.calledWith(500,"'id' is required").should.equal(true);
+
+      done();
+    });
+  });
+
   describe( "create endpoint", function() {
     // Create
-    it('should create new Product with successful response', function( done ) {
+    it('should create new Product with success response', function( done ) {
       // Given
       var res = { send: sinon.spy(), json: sinon.spy() };
       var result = { name: "Product 1" };

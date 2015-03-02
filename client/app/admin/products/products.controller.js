@@ -12,5 +12,10 @@ angular.module('sendoApp')
       $location.path("/admin/products/add");
     };
 
+    $scope.product_click = function(index) {
+      var selected_product = $scope.products[ index ];
+      $location.path("/admin/products/add/" + selected_product._id );
+    };
+
     init();
   });
