@@ -23,6 +23,9 @@ exports.create = function( req, res ) {
 };
 
 exports.upload_photo = function( req, res ) {
+  if ( !req.files ) {
+    return res.send( 500 );
+  }
   var files = [];
   if (req.files) {
     for ( var key in req.files ) {
