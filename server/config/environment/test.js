@@ -11,5 +11,6 @@ module.exports = {
     uri: 'mongodb://localhost/sendo-test'
   },
 
-  seedDB: true
+  seedDB: true,
+  upload_files_path: ".tmp/test/uploads/"
 };

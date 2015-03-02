@@ -49,7 +49,7 @@ describe('Controller: EditProductController', function () {
       expect(this.$scope.product.id).toBe("product_1");
     });
 
-    iit('product details should be assigned to scope.product', function() {
+    it('product details should be assigned to scope.product', function() {
       this.$httpBackend.flush();
       expect(this.$scope.product.title).toEqual("Product 1");
       expect(this.$scope.product.description).toEqual("Product 1 Description");
