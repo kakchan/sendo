@@ -1,7 +1,9 @@
 <div class="admin-page-head clearfix">
   <div class="admin-page-head-left">
     <div class="admin-page-title">
-      <a href="/admin/products" class="admin-page-title-link">Products</a> &gt; Add Product
+      <a href="/admin/products" class="admin-page-title-link">Products</a>
+      <span ng-show="page_name">&gt; {{page_name}}</span>
+      <span ng-show="product.title" class="product-title-label">&gt {{product.title}}</span>
     </div>
   </div>
   <div class="admin-page-head-right">

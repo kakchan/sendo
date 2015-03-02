@@ -2,6 +2,7 @@
 
 var AdminAddProductPage = function() {
   this.pageContainerEl = element(by.css('.page-container'));
+  this.productTitleLabel = element(by.css('.product-title-label'));
 
   this.pageTitleEl = this.pageContainerEl.element(by.css('.admin-page-title'));
   this.pageTitleLinkEl = this.pageContainerEl.element(by.css('.admin-page-title-link'));

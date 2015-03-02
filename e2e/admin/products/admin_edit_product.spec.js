@@ -45,6 +45,8 @@ describe('Admin Add Product Page View', function() {
 
     it('should create a new product when "Save" button is clicked', function() {
       this._edit_product_page.titleFieldEl.sendKeys("Product 1");
+      expect(this._edit_product_page.productTitleLabel.getText(), "> Product 1");
+
       this._edit_product_page.descriptionFieldEl.sendKeys("Product Description 1");
       this._edit_product_page.pageTitleFieldEl.sendKeys("Product 1 - Page Title");
       this._edit_product_page.metaDescriptionFieldEl.sendKeys("Product 1 - Meta Description");
@@ -101,11 +103,11 @@ describe('Admin Add Product Page View', function() {
     });
 
     iit('product details should be populated correctly', function() {
-      // page title should be "Sendo | Add Product"
-      expect(browser.getTitle()).toEqual('Sendo | Add Product');
+      // page title should be "Sendo | Edit Product"
+      expect(browser.getTitle()).toEqual('Sendo | Edit Product');
 
       // should include "Products > Add Product" admin page header
-      expect(this._edit_product_page.pageTitleEl.getText()).toBe("Products > Add Product");
+      expect(this._edit_product_page.pageTitleEl.getText()).toBe("Products > Edit Product > Product 1");
 
       // should contain "Products" link
       expect(this._edit_product_page.pageTitleLinkEl.isDisplayed()).toBe(true);

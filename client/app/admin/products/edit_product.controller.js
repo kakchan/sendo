@@ -3,14 +3,17 @@
 angular.module('sendoApp')
   .controller('EditProductController', function ($scope, $stateParams, Product) {
     var init = function() {
-      $scope.$parent.page_title = CONFIG.APP_NAME + " | Add Product";
       $scope.product = { images: [] };
       var product_id = $stateParams.product_id;
       if ( product_id ) {
+        $scope.page_name = "Edit Product";
         // load product details
         $scope.product = Product.get({ id: product_id });
         $scope.product.id = product_id;
+      } else {
+        $scope.page_name = "Add Product";
       }
+      $scope.$parent.page_title = CONFIG.APP_NAME + " | " + $scope.page_name;
     };
 
     /* Event Handlers */
