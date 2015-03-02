@@ -2,8 +2,10 @@
 
 angular.module('sendoApp')
   .controller('AddProductController', function ($scope, Product) {
-    $scope.$parent.page_title = CONFIG.APP_NAME + " | Add Product";
-    $scope.product = { images: [] };
+    var init = function() {
+      $scope.$parent.page_title = CONFIG.APP_NAME + " | Add Product";
+      $scope.product = { images: [] };
+    };
 
     /* Event Handlers */
     $scope.save_click = function() {
@@ -22,4 +24,6 @@ angular.module('sendoApp')
         callback && callback();
       } );
     };
+
+    init();
   });

@@ -2,9 +2,8 @@
 
 angular.module('sendoApp')
   .controller('ProductsController', function ($scope, $location, Product) {
-    $scope.$parent.page_title = CONFIG.APP_NAME + " | Products";
-
     var init = function() {
+      $scope.$parent.page_title = CONFIG.APP_NAME + " | Products";
       $scope.products = Product.query();
     };
 
