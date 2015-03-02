@@ -52,13 +52,13 @@ angular.module('sendoApp')
       })
       .state('admin/products/add', {
         url: "/admin/products/add",
-        templateUrl: "app/admin/products/add_product.html",
-        controller: 'AddProductController'
+        templateUrl: "app/admin/products/edit_product.html",
+        controller: 'EditProductController'
       })
       .state('admin/products/edit', {
-        url: "/admin/products/add/:product_id",
-        templateUrl: "app/admin/products/add_product.html",
-        controller: 'AddProductController'
+        url: "/admin/products/edit/:product_id",
+        templateUrl: "app/admin/products/edit_product.html",
+        controller: 'EditProductController'
       } )
 
       .state('admin', {

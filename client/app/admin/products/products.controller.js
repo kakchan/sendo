@@ -14,7 +14,7 @@ angular.module('sendoApp')
 
     $scope.product_click = function(index) {
       var selected_product = $scope.products[ index ];
-      $location.path("/admin/products/add/" + selected_product._id );
+      $location.path("/admin/products/edit/" + selected_product._id );
     };
 
     init();

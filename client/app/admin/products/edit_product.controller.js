@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendoApp')
-  .controller('AddProductController', function ($scope, $stateParams, Product) {
+  .controller('EditProductController', function ($scope, $stateParams, Product) {
     var init = function() {
       $scope.$parent.page_title = CONFIG.APP_NAME + " | Add Product";
       $scope.product = { images: [] };

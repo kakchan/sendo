@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: AddProductController', function () {
+describe('Controller: EditProductController', function () {
 
   // load the controller's module
   beforeEach(module('sendoApp'));
@@ -9,7 +9,7 @@ describe('Controller: AddProductController', function () {
     beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
       // Given
       this.$scope = $rootScope.$new();
-      this.AddProductController = $controller('AddProductController', {
+      $controller('EditProductController', {
         $scope: this.$scope
       });
     }));
@@ -39,7 +39,7 @@ describe('Controller: AddProductController', function () {
         .respond(product);
 
       this.$scope = $rootScope.$new();
-      $controller('AddProductController', {
+      $controller('EditProductController', {
         $scope: this.$scope,
         $stateParams: { product_id: product_id }
       });
