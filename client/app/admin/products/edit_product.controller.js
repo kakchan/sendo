@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendoApp')
-  .controller('EditProductController', function ($scope, $stateParams, Product) {
+  .controller('EditProductController', function ($scope, $stateParams, $location, Product) {
     var init = function() {
       $scope.product = { images: [] };
       var product_id = $stateParams.product_id;
@@ -19,8 +19,9 @@ angular.module('sendoApp')
     /* Event Handlers */
     $scope.save_click = function() {
       $scope.showMessagePanel( "Saving Product...", null, true );
-      Product.save($scope.product, function() {
+      Product.save($scope.product, function(resp) {
         $scope.showMessagePanel( "Product Saved!", 3000 );
+        $location.path("/admin/products/edit/" + resp._id );
       });
     };
 
