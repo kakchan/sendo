@@ -78,6 +78,28 @@ describe('Admin Add Product Page View', function() {
     } );
 
     describe( "Upload Photo", function() {
+      iit('first uploaded photo will be the default image', function() {
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
+        expect(this._edit_product_page.photoThumbnailContainerEl
+          .all(by.css('.photo-thumbnail'))
+          .get(0)
+          .element(by.css(".is_default")).isDisplayed()).toBe(true);
+
+        // add one more photo
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
+        expect(this._edit_product_page.photoThumbnailContainerEl
+          .all(by.css('.photo-thumbnail'))
+          .get(0)
+          .element(by.css(".is_default")).isDisplayed()).toBe(true);
+        expect(this._edit_product_page.photoThumbnailContainerEl
+          .all(by.css('.photo-thumbnail'))
+          .get(1)
+          .element(by.css(".is_default")).isDisplayed()).toBe(false);
+
+      });
+
       it('should be able to upload photo', function() {
         expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);

@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 
 var ProductImage = new Schema({
   filename: String,
-  size: Number
+  size: Number,
+  is_default: Boolean
 });
 
 var ProductSchema = new Schema({

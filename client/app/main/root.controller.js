@@ -5,7 +5,6 @@ angular.module('sendoApp')
     $scope.page_title = "Sendo";
 
     $scope.showMessagePanel = function( text, duration, loading, error ) {
-      console.log("showMessagePanel");
       if ( text === undefined || text.trim() === "" ) { return; }
       $scope.messagePanelText = text;
       $scope.messagePanelShow = true;

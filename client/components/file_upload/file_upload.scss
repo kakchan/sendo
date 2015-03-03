@@ -61,6 +61,17 @@
     }
 
     .photo-thumbnail {
+      .is_default {
+        font-size: 9px;
+        color: #333;
+        background-color: #fff;
+        position: absolute;
+        padding: 2px 5px;
+        border-radius: 2px;
+        margin-top: -6px;
+        margin-left: -7px;
+      }
+
       .photo-thumbnail-image {
         border-radius: 2px;
         max-width: 100px;

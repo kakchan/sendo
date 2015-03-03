@@ -62,6 +62,18 @@ angular.module('sendoApp')
             $scope.images.splice(index,1);
           });
         };
+
+        /* Watchers */
+        $scope.$watch( "images", function( images ) {
+          if ( images && images.length > 0 ) {
+            var has_default = images.filter( function( image ) {
+              return image.is_default;
+            } ).length > 0;
+            if (has_default === false) {
+              images[0].is_default = true;
+            }
+          }
+        },true );
       }
     }
   });
