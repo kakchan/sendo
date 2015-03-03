@@ -9,10 +9,16 @@
     <div class="photo-thumbnails-background-text" ng-show="images.length === 0 && !showAddUploadImage">Click "Add Image" or Drag your images here</div>
     <div class="photo-thumbnail" ng-repeat="image in images">
       <div class="is_default" ng-show="image.is_default">Default</div>
+      <div class="photo-thumbnail-menu">
+        <div>
+          <a href="#" class="photo-thumbnail-mark-as-default" ng-hide="image.is_default">Mark as Default</a>
+          <a href="#" class="photo-thumbnail-set-alt">set ALT</a>
+          <a href="#" class="photo-thumbnail-remove" ng-click="delete_photo_click($index)">remove</a>
+        </div>
+      </div>
       <div class="photo-thumbnail-image-container">
         <img class="photo-thumbnail-image" src="/uploads/photos/products/{{image.filename}}"/>
       </div>
-      <div class="photo-thumbnail-trash fa fa-trash-o" ng-click="delete_photo_click($index)"></div>
     </div>
     <div ng-show="showAddUploadImage" class="photo-thumbnail-add-upload-images" ng-class="{ 'show-upload-image-message': dragPhoto}">
       <span class="photo-thumbnail-add-upload-images-text">

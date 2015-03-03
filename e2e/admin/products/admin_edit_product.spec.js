@@ -78,7 +78,7 @@ describe('Admin Add Product Page View', function() {
     } );
 
     describe( "Upload Photo", function() {
-      iit('first uploaded photo will be the default image', function() {
+      it('first uploaded photo will be the default image', function() {
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
         expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
         expect(this._edit_product_page.photoThumbnailContainerEl
@@ -107,32 +107,50 @@ describe('Admin Add Product Page View', function() {
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
         expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(1);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-default')).count()).toBe(1);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(1);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(1);
 
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
         expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(2);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-default')).count()).toBe(2);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(2);
+        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(2);
       });
 
       it('should delete photo when trash icon is clicked', function() {
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
-        expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(1);
+        var photoThumbnailContainerEl = this._edit_product_page.photoThumbnailContainerEl;
+        var photo_thumbnails = photoThumbnailContainerEl.all(by.css(".photo-thumbnail"));
+        expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
+        expect(photo_thumbnails.count()).toBe(1);
 
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
-        expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(2);
+        expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
+        expect(photo_thumbnails.count()).toBe(2);
 
-        this._edit_product_page.photoThumbnailContainerEl.element(by.css('.photo-thumbnail-trash')).click();
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(1);
 
-        this._edit_product_page.photoThumbnailContainerEl.element(by.css('.photo-thumbnail-trash')).click();
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-trash')).count()).toBe(0);
+        var first_photo_thumbnail = photo_thumbnails.get(0);
+        expect(photo_thumbnails.count()).toBe(2);
+        expect(first_photo_thumbnail.element(by.css('.photo-thumbnail-menu')).isDisplayed()).toBe(false);
+
+        // hover the first photo thumbnail
+        browser
+          .actions()
+          .mouseMove(first_photo_thumbnail)
+          .perform();
+
+        // click remove button
+        expect(first_photo_thumbnail.element(by.css('.photo-thumbnail-menu')).isDisplayed()).toBe(true);
+        expect(photo_thumbnails.get(0).element(by.css('.photo-thumbnail-remove')).isDisplayed()).toBe(true);
+        first_photo_thumbnail.element(by.css('.photo-thumbnail-remove')).click();
+        expect(photo_thumbnails.count()).toBe(1);
+
+        // click remove button again
+        first_photo_thumbnail.element(by.css('.photo-thumbnail-remove')).click();
+        expect(photo_thumbnails.count()).toBe(0);
       });
     });
   });
