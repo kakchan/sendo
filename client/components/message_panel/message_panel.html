@@ -1,0 +1,7 @@
+<div class="message-panel-container" data-ng-class="{ error: error, show: show }">
+  <div class="message-panel">
+    <span ng-show="!error && loading"><img class="message-panel-loading" src="/assets/images/loading.gif"/></span>
+    <span ng-bind-html="message"></span>
+    <div class="fa fa-times selectable" ng-click="close()"></div>
+  </div>
+</div>

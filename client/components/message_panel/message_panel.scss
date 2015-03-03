@@ -1,0 +1,37 @@
+.message-panel-container {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  -webkit-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  transform: translateY(5px);
+  &.error .message-panel {
+    background-color: #f2dede;
+  }
+  .message-panel {
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    display: inline-block;
+    padding: 8px 25px;
+    color: #333;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 10px #000;
+    .fa-times {
+      margin-left: 10px;
+    }
+    .message-panel-loading {
+      width: 25px;
+    }
+  }
+  &.show .message-panel {
+    -webkit-transform: translateY(45px);
+    -ms-transform: translateY(45px);
+    transform: translateY(45px);
+  }
+}

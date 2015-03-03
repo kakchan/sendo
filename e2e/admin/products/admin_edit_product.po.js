@@ -1,6 +1,8 @@
 'use strict';
 
 var AdminAddProductPage = function() {
+  this.messagePanelEl = element(by.css('.message-panel-container'));
+
   this.pageContainerEl = element(by.css('.page-container'));
   this.productTitleLabel = element(by.css('.product-title-label'));
 

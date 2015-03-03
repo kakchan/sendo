@@ -18,7 +18,10 @@ angular.module('sendoApp')
 
     /* Event Handlers */
     $scope.save_click = function() {
-      Product.save($scope.product);
+      $scope.showMessagePanel( "Saving Product...", null, true );
+      Product.save($scope.product, function() {
+        $scope.showMessagePanel( "Product Saved!", 3000 );
+      });
     };
 
     $scope.file_upload_changed = function(form_data, callback) {

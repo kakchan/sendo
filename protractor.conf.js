@@ -17,9 +17,7 @@ exports.config = {
   chromeOnly: true,
 
   // list of files / patterns to load in the browser
-  specs: [
-    'e2e/**/*.spec.js'
-  ],
+  // specs: [],
 
   // Patterns to exclude.
   exclude: [],
