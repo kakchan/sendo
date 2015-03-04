@@ -1,6 +1,7 @@
 var Product = require('./product.model');
 var fs = require('fs');
 var config = require('../../config/environment');
+var utils = require('../../components/utils');
 
 exports.index = function(req, res) {
   Product.find({}, function (err, products) {
@@ -28,7 +29,7 @@ exports.create = function( req, res ) {
   var product = new Product(data);
   product.save( function( err, new_product ) {
     if ( err ) {
-      return res.send(500, err );
+      return res.send(500, utils.error_handler(err) );
     }
     res.json(200, new_product );
   } );

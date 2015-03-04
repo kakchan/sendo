@@ -3,6 +3,9 @@
 var cwd = process.cwd();
 
 describe('Admin Add Product Page View', function() {
+
+
+  // Add Product
   describe( "Add Product", function() {
     beforeEach(function() {
       this._edit_product_page = require('./admin_edit_product.po.js');
@@ -57,23 +60,36 @@ describe('Admin Add Product Page View', function() {
         this._edit_product_page.saveButtonEl.click();
       });
 
-      it("Message Panel should show and display 'Product Saved!'", function() {
-        // product should be saved
-        expect(this._edit_product_page.messagePanelEl.isDisplayed()).toBe( true );
-        expect(this._edit_product_page.messagePanelEl.getText()).toBe("Product Saved!");
-      });
+      describe( "Save Successfully", function() {
+        it("Message Panel should show and display 'Product Saved!'", function() {
+          // product should be saved
+          expect(this._edit_product_page.messagePanelEl.isDisplayed()).toBe( true );
+          expect(this._edit_product_page.messagePanelEl.getText()).toBe("Product Saved!");
+        });
 
-      it("should direct users to the edit page", function() {
-        // should direct users to the edit page
-        expect(browser.getCurrentUrl()).toMatch(/\/admin\/products\/edit/);
-        expect(browser.getTitle()).toEqual('Sendo | Edit Product');
-      });
+        it("should direct users to the edit page", function() {
+          // should direct users to the edit page
+          expect(browser.getCurrentUrl()).toMatch(/\/admin\/products\/edit/);
+          expect(browser.getTitle()).toEqual('Sendo | Edit Product');
+        });
 
-      it("should see one more product when going back to the Products page", function() {
-        // going back to the Product page, number of products should be incremented by 1
-        this._edit_product_page.pageTitleLinkEl.click();
-        expect(browser.getTitle()).toEqual('Sendo | Products');
-        expect(this._products_page.productRowEls.count()).toBe(this._products_page.product_count+1);
+        it("should see one more product when going back to the Products page", function() {
+          // going back to the Product page, number of products should be incremented by 1
+          this._edit_product_page.pageTitleLinkEl.click();
+          expect(browser.getTitle()).toEqual('Sendo | Products');
+          expect(this._products_page.productRowEls.count()).toBe(this._products_page.product_count+1);
+        });
+      });
+    } );
+
+    describe( "Save Validation", function() {
+      it("should display validation message if 'Title' field is empty", function() {
+        this._edit_product_page.saveButtonEl.click();
+
+        this._edit_product_page.titleFieldEl.sendKeys("");
+        this._edit_product_page.saveButtonEl.click();
+        expect(this._edit_product_page.validationMessageEl.isDisplayed()).toBe(true);
+        expect(this._edit_product_page.validationMessageEl.getText()).toBe("'Title' field cannot be blank");
       });
     } );
 
@@ -155,6 +171,10 @@ describe('Admin Add Product Page View', function() {
     });
   });
 
+
+
+
+  // Edit Product
   describe("Edit Product", function() {
     beforeEach(function() {
       this._edit_product_page = require('./admin_edit_product.po.js');

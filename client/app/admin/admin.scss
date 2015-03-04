@@ -12,6 +12,13 @@ A:hover, A:focus {
   color: #333;
 }
 
+.validation-message {
+  background-color: #f2dede;
+  padding: 10px;
+  color: #D87777;
+  border-radius: 3px;
+}
+
 /* Bootstrap Override */
 .btn-primary,
 .btn-primary:focus,

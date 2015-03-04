@@ -22,6 +22,11 @@ angular.module('sendoApp')
       Product.save($scope.product, function(resp) {
         $scope.showMessagePanel( "Product Saved!", 3000 );
         $location.path("/admin/products/edit/" + resp._id );
+      }, function(err) {
+        $scope.hideMessagePanel();
+        if ( err.status === 500 ) {
+          $scope.validation_message = err.data[0]
+        }
       });
     };
 

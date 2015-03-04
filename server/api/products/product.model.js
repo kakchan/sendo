@@ -11,7 +11,7 @@ var ProductImage = new Schema({
 
 var ProductSchema = new Schema({
   shop_id: { type: Number, index: true },
-  title: String,
+  title: { type: String, required: "'Title' field cannot be blank" },
   description: String,
   page_title: String,
   meta_description: String,
@@ -21,15 +21,14 @@ var ProductSchema = new Schema({
   updated_at: Date
 });
 
-module.exports = mongoose.model( "Product", ProductSchema, "Products" );
-
 /**
  * Validations
  */
 
-// Validate empty title
 ProductSchema
   .path('title')
   .validate(function(title) {
-    return title.length;
-  }, 'Product Title cannot be blank');
+    return (title && title.trim().length > 0) === true;
+  }, 'Invalid Title field');
+
+module.exports = mongoose.model( "Product", ProductSchema, "Products" );

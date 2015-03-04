@@ -11,6 +11,7 @@
   </div>
 </div>
 <div class="admin-page-body">
+  <div class="validation-message" ng-if="validation_message">{{validation_message}}</div>
   <label for="product_title">Title</label>
   <input class="form-control" type="text" id="product_title" ng-model="product.title"/>
   <label for="product_description">Description</label>

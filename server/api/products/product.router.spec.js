@@ -148,12 +148,13 @@ describe('Product Router', function() {
       done();
     });
 
-    it('should return 500 http status with error message', function( done ) {
+    it('ericchan should return 500 http status with error message', function( done ) {
       // Given
       var res = { send: sinon.spy(), json: sinon.spy() };
       var result = { name: "Product 1" };
       var error_message = "Error Message";
-      FakeProductModel.prototype.save.yields(error_message, result);
+      var error_response = { errors: { title: { message: error_message } } };
+      FakeProductModel.prototype.save.yields(error_response, result);
 
       // When
       ProductRouter.create({}, res);
@@ -161,7 +162,7 @@ describe('Product Router', function() {
       // Then
       FakeProductModel.calledWithNew().should.equal(true);
       res.json.called.should.equal(false);
-      res.send.calledWith(500, error_message).should.equal(true);
+      res.send.calledWith(500, [ error_message ]).should.equal(true);
 
       done();
     });
