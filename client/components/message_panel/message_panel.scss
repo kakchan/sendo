@@ -6,9 +6,9 @@
   width: 100%;
   text-align: center;
   font-size: 18px;
-  -webkit-transform: translateY(5px);
-  -ms-transform: translateY(5px);
-  transform: translateY(5px);
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
   &.error .message-panel {
     background-color: #f2dede;
   }

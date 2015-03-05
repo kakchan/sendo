@@ -16,8 +16,14 @@ var AdminAddProductPage = function() {
   this.uploadFileInputFieldEl = this.pageContainerEl.element(by.css('.file-upload-field'));
   this.photoThumbnailContainerEl = this.pageContainerEl.element(by.css('.photo-thumbnails-container'));
 
-  this.pageTitleFieldEl = this.pageContainerEl.element(by.id('page_title'));
-  this.metaDescriptionFieldEl = this.pageContainerEl.element(by.id('meta_description'));
+  this.pageTitleFieldEl = this.pageContainerEl.element(by.css("DIV[element-id='page_title']"));
+  this.pageTitleInputFieldEl = this.pageTitleFieldEl.element(by.id('page_title'));
+  this.pageTitleFieldCharacterCountLabelEl = this.pageTitleFieldEl.element(by.css(".input-field-chars-count"));
+
+
+  this.metaDescriptionFieldEl = this.pageContainerEl.element(by.css("DIV[element-id='meta_description']"));
+  this.metaDescriptionInputFieldEl = this.metaDescriptionFieldEl.element(by.id('meta_description'));
+  this.metaDescriptionFieldCharacterCountLabelEl = this.metaDescriptionFieldEl.element(by.css(".input-field-chars-count"));
 
   this.validationMessageEl = this.pageContainerEl.element(by.css('.validation-message'));
 

@@ -32,10 +32,10 @@ describe('Admin Add Product Page View', function() {
         expect(this._edit_product_page.descriptionFieldEl.isDisplayed()).toBe(true);
 
         // should contain Page Title field
-        expect(this._edit_product_page.pageTitleFieldEl.isDisplayed()).toBe(true);
+        expect(this._edit_product_page.pageTitleInputFieldEl.isDisplayed()).toBe(true);
 
         // should contain Meta Description field
-        expect(this._edit_product_page.metaDescriptionFieldEl.isDisplayed()).toBe(true);
+        expect(this._edit_product_page.metaDescriptionInputFieldEl.isDisplayed()).toBe(true);
 
         // should contain Save button
         expect(this._edit_product_page.saveButtonEl.isDisplayed()).toBe(true);
@@ -54,8 +54,8 @@ describe('Admin Add Product Page View', function() {
         expect(this._edit_product_page.productTitleLabel.getText()).toBe( "> Product 1" );
 
         this._edit_product_page.descriptionFieldEl.sendKeys("Product Description 1");
-        this._edit_product_page.pageTitleFieldEl.sendKeys("Product 1 - Page Title");
-        this._edit_product_page.metaDescriptionFieldEl.sendKeys("Product 1 - Meta Description");
+        this._edit_product_page.pageTitleInputFieldEl.sendKeys("Product 1 - Page Title");
+        this._edit_product_page.metaDescriptionInputFieldEl.sendKeys("Product 1 - Meta Description");
 
         this._edit_product_page.saveButtonEl.click();
       });
@@ -92,6 +92,36 @@ describe('Admin Add Product Page View', function() {
         expect(this._edit_product_page.validationMessageEl.getText()).toBe("'Title' field cannot be blank");
       });
     } );
+
+    describe("Page Title and Meta Description Max Length", function() {
+      it("Page Title should not over 70 characters", function() {
+        // Count Label
+        var pageTitleFieldCharacterCountLabelEl = this._edit_product_page.pageTitleFieldCharacterCountLabelEl;
+        expect(pageTitleFieldCharacterCountLabelEl.getText()).toBe("( 0 of 70 characters )");
+
+        // Title Input field
+        var pageTitleInputFieldEl = this._edit_product_page.pageTitleInputFieldEl;
+        pageTitleInputFieldEl.sendKeys("01234567890123456789012345678901234567890123456789012345678901234567891");
+        expect(pageTitleInputFieldEl.getAttribute('value')).toBe("0123456789012345678901234567890123456789012345678901234567890123456789");
+
+        // Update Count Label
+        expect(pageTitleFieldCharacterCountLabelEl.getText()).toBe("( 70 of 70 characters )");
+      });
+
+      it("Meta Description should not over 160 characters", function() {
+        // Count Label
+        var metaDescriptionFieldCharacterCountLabelEl = this._edit_product_page.metaDescriptionFieldCharacterCountLabelEl;
+        expect(metaDescriptionFieldCharacterCountLabelEl.getText()).toBe("( 0 of 160 characters )");
+
+        // Title Input field
+        var metaDescriptionInputFieldEl = this._edit_product_page.metaDescriptionInputFieldEl;
+        metaDescriptionInputFieldEl.sendKeys("01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567891");
+        expect(metaDescriptionInputFieldEl.getAttribute('value')).toBe("0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+
+        // Update Count Label
+        expect(metaDescriptionFieldCharacterCountLabelEl.getText()).toBe("( 160 of 160 characters )");
+      });
+    });
 
     describe( "Upload Photo", function() {
       it('first uploaded photo will be the default image', function() {
@@ -201,12 +231,12 @@ describe('Admin Add Product Page View', function() {
         expect(this._edit_product_page.descriptionFieldEl.getAttribute('value')).toBe("Product Description 1");
 
         // should contain Page Title field
-        expect(this._edit_product_page.pageTitleFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.pageTitleFieldEl.getAttribute('value')).toBe("Product Page Title 1");
+        expect(this._edit_product_page.pageTitleInputFieldEl.isDisplayed()).toBe(true);
+        expect(this._edit_product_page.pageTitleInputFieldEl.getAttribute('value')).toBe("Product Page Title 1");
 
         // should contain Meta Description field
-        expect(this._edit_product_page.metaDescriptionFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.metaDescriptionFieldEl.getAttribute('value')).toBe("Product Meta Description 1");
+        expect(this._edit_product_page.metaDescriptionInputFieldEl.isDisplayed()).toBe(true);
+        expect(this._edit_product_page.metaDescriptionInputFieldEl.getAttribute('value')).toBe("Product Meta Description 1");
 
         // should contain Save button
         expect(this._edit_product_page.saveButtonEl.isDisplayed()).toBe(true);

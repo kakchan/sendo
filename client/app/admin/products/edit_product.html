@@ -20,8 +20,6 @@
   <div class="sd-file-upload" on-file-changed="file_upload_changed" on-file-delete="file_delete" images="product.images"></div>
   <!-- SEO -->
   <h4 class="section-header">Search Engines</h4>
-  <label for="page_title">Page Title</label>
-  <input class="form-control" type="text" id="page_title" ng-model="product.page_title"/>
-  <label for="meta_description">Meta Description</label>
-  <input class="form-control" type="text" id="meta_description" ng-model="product.meta_description"/>
+  <div class="sd-input-field" element-title="Page Title" element-id="page_title" model="product.page_title" max-length="70"></div>
+  <div class="sd-input-field" element-title="Meta Description" element-id="meta_description" model="product.meta_description" max-length="160"></div>
 </div>
