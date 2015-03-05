@@ -124,13 +124,13 @@ describe('Admin Add Product Page View', function() {
     });
 
     describe( "Upload Photo", function() {
-      it('first uploaded photo will be the default image', function() {
+      it('first uploaded photo will be the featured image', function() {
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
         expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
         expect(this._edit_product_page.photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(0)
-          .element(by.css(".is_default")).isDisplayed()).toBe(true);
+          .element(by.css(".is_featured")).isDisplayed()).toBe(true);
 
         // add one more photo
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
@@ -138,31 +138,58 @@ describe('Admin Add Product Page View', function() {
         expect(this._edit_product_page.photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(0)
-          .element(by.css(".is_default")).isDisplayed()).toBe(true);
+          .element(by.css(".is_featured")).isDisplayed()).toBe(true);
         expect(this._edit_product_page.photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(1)
-          .element(by.css(".is_default")).isDisplayed()).toBe(false);
-
+          .element(by.css(".is_featured")).isDisplayed()).toBe(false);
       });
 
       it('should be able to upload photo', function() {
-        expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);
+        var photoThumbnailContainerEl = this._edit_product_page.photoThumbnailContainerEl;
+        expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);
 
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
-        expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-default')).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(1);
+        expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-featured')).count()).toBe(1);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(1);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(1);
 
         this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
-        expect(this._edit_product_page.photoThumbnailContainerEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-default')).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(2);
+        expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-featured')).count()).toBe(2);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(2);
+        expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(2);
+      });
+
+      it('should make the photo to featured after clicking "Mark as featured"', function() {
+        var photoThumbnailContainerEl = this._edit_product_page.photoThumbnailContainerEl;
+        var photo_thumbnails = photoThumbnailContainerEl.all(by.css(".photo-thumbnail"));
+
+        var uploadFileInputFieldEl = this._edit_product_page.uploadFileInputFieldEl;
+        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
+        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
+        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/green_apple.gif");
+        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/orange.gif");
+        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/pear.gif");
+
+        var first_photo_thumbnail = photo_thumbnails.get(0);
+        var third_photo_thumbnail = photo_thumbnails.get(2);
+        browser
+          .actions()
+          .mouseMove(third_photo_thumbnail)
+          .perform();
+
+        expect(first_photo_thumbnail.element(by.css(".is_featured")).isDisplayed()).toBe(true);
+        expect(third_photo_thumbnail.element(by.css(".is_featured")).isDisplayed()).toBe(false);
+        expect(third_photo_thumbnail.element(by.css('.photo-thumbnail-menu')).isDisplayed()).toBe(true);
+        third_photo_thumbnail.element(by.css('.photo-thumbnail-mark-as-featured')).click();
+
+        expect(first_photo_thumbnail.element(by.css(".is_featured")).isDisplayed()).toBe(false);
+        expect(third_photo_thumbnail.element(by.css(".is_featured")).isDisplayed()).toBe(true);
       });
 
       it('should delete photo when trash icon is clicked', function() {

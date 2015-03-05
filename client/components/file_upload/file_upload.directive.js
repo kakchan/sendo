@@ -7,6 +7,7 @@ angular.module('sendoApp')
       scope: {
         onFileChanged: "=",
         onFileDelete: "=",
+        onMarkAsFeatured: "=",
         images: "="
       },
       replace: true,
@@ -56,6 +57,22 @@ angular.module('sendoApp')
         } );
 
         /* Event Handlers */
+        var get_featured_image = function() {
+          return $scope.images.filter( function( image ) {
+            return image.is_featured === true;
+          })[0];
+        };
+
+        $scope.mark_as_featured_click = function( index ) {
+          // reset featured image
+          var featured_image = get_featured_image();
+          featured_image.is_featured = false;
+
+          // set the selected image to featured
+          var image = $scope.images[index];
+          image.is_featured = true;
+        };
+
         $scope.delete_photo_click = function(index) {
           var image = $scope.images[index];
           $scope.onFileDelete(image, function() {
@@ -66,11 +83,11 @@ angular.module('sendoApp')
         /* Watchers */
         $scope.$watch( "images", function( images ) {
           if ( images && images.length > 0 ) {
-            var has_default = images.filter( function( image ) {
-              return image.is_default;
+            var has_featured = images.filter( function( image ) {
+              return image.is_featured;
             } ).length > 0;
-            if (has_default === false) {
-              images[0].is_default = true;
+            if (has_featured === false) {
+              images[0].is_featured = true;
             }
           }
         },true );

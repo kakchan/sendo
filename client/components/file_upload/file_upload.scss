@@ -64,7 +64,7 @@
       position: relative;
       background-color: #222;
       @include vertical-align();
-      .is_default {
+      .is_featured {
         font-size: 9px;
         color: #333;
         background-color: #fff;
@@ -95,7 +95,7 @@
         }
       }
       &:hover .photo-thumbnail-menu {
-        opacity: .8;
+        opacity: .9;
         z-index: 1;
       }
 

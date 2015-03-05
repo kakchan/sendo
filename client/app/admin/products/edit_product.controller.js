@@ -37,10 +37,14 @@ angular.module('sendoApp')
       });
     };
 
-    $scope.file_delete = function(photo, callback) {
+    /* Upload File directive Handlers */
+    $scope.on_file_delete = function(photo, callback) {
       Product.delete_photo( {filename: photo.filename}, {}, function( resp ) {
         callback && callback();
       } );
+    };
+
+    $scope.on_mark_as_featured = function() {
     };
 
     init();

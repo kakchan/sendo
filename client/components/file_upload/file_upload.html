@@ -8,10 +8,10 @@
   <div class="photo-thumbnails-container clearfix" ng-class="{ 'drag-photo': dragPhoto }">
     <div class="photo-thumbnails-background-text" ng-show="images.length === 0 && !showAddUploadImage">Click "Add Image" or Drag your images here</div>
     <div class="photo-thumbnail" ng-repeat="image in images">
-      <div class="is_default" ng-show="image.is_default">Default</div>
+      <div class="is_featured" ng-show="image.is_featured">Featured</div>
       <div class="photo-thumbnail-menu">
         <div>
-          <a href="#" class="photo-thumbnail-mark-as-default" ng-hide="image.is_default">Mark as Default</a>
+          <a href="#" class="photo-thumbnail-mark-as-featured" ng-click="mark_as_featured_click($index)" ng-hide="image.is_featured">Mark as Featured</a>
           <a href="#" class="photo-thumbnail-set-alt">set ALT</a>
           <a href="#" class="photo-thumbnail-remove" ng-click="delete_photo_click($index)">remove</a>
         </div>
