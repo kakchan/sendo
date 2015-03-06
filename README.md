@@ -2,6 +2,12 @@
 
 Sendo is an open source Node.js ecommerce platform. It is developed with MongoDB, Express and Angular.
 
+##Requirements
+Sendo requires the following software to be installed:
+
+- Node (version 0.10 or later)
+- MongoDB (version 3.6.7 or later)
+
 
 ## Setup Local Development Environment
 ### Unit Tests
