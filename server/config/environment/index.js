@@ -43,7 +43,8 @@ var all = {
     }
   },
 
-  upload_files_path: ".tmp/uploads/"
+  upload_files_path: ".tmp/uploads/",
+  max_results_in_page: 5
 };
 
 // Export the config object based on the NODE_ENV
@@ -78,7 +79,7 @@ var recreate_file_path = function( path ) {
     remove_folder.bind( null, path ),
     create_folder.bind( null, path )
   ], function() {
-    console.log("Completed: create_file_path")
+    console.log("\nCompleted: create_file_path")
   } );
 };
 
@@ -87,5 +88,18 @@ if ( config.env === "test" ) {
     recreate_file_path(config[fn_name]);
   } );
 }
+
+
+_.extend( config, {
+  get_base_url: function() {
+    return "http://" + config.host + ":" + config.port;
+  },
+  get_admin_login_api_url: function() {
+    return this.get_base_url() + "/auth/local";
+  },
+  get_admin_product_api_index_url: function() {
+    return this.get_base_url() + "/api/products";
+  }
+});
 
 module.exports = config;

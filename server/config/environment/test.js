@@ -3,6 +3,8 @@
 // Test specific configuration
 // ===========================
 module.exports = {
+  host: "localhost",
+
   // Server port
   port: process.env.PORT || 9877,
 

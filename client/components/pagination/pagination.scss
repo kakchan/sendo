@@ -1,0 +1,35 @@
+.sd-pagination {
+  display: inline-block;
+}
+
+.sd-pagination-page-link {
+  display: inline-block;
+}
+
+.sd-pagination-page-no {
+  width: 25px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-right: 2px;
+  color: #e34ea2;
+}
+
+.sd-pagination-container {
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.sd-pagination-page-no.active {
+  border-color: #666;
+  color: #666;
+}
+
+.sd-pagination-page-no:hover {
+  border-color: #e34ea2;
+  cursor: pointer;
+}
+
+.sd-pagination-page-no.active:hover {
+  border-color: #666;
+  cursor: default;
+}

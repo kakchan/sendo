@@ -5,6 +5,10 @@ angular.module('sendoApp')
     return $resource('/api/products/:id/:controller', {
       id: '@_id'
     }, {
+      query: {
+        method: 'GET',
+        isArray: false
+      },
       upload_photo: {
         method: 'POST',
         headers: {

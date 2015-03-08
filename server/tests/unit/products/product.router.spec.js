@@ -2,20 +2,25 @@
 
 var should = require('should');
 var rewire = require('rewire');
-var ProductRouter = rewire("./product.router");
+var ProductRouter = rewire("../../../api/products/product.router");
+var FakeAsync = require('../fake/FakeAsync');
 var FakeProductModel = require('../fake/FakeProductModel');
 var FakeFileSystem = require('../fake/FakeFileSystem');
 var sinon = require('sinon');
+var config = require("../../../config/environment");
 
 describe('Product Router', function() {
   beforeEach(function(done) {
     // Product Model
     FakeProductModel = sinon.spy(FakeProductModel);
     FakeProductModel.prototype.save = sinon.stub(FakeProductModel.prototype, "save");
-    FakeProductModel.find = sinon.stub(FakeProductModel, "find");
     FakeProductModel.findById = sinon.stub(FakeProductModel, "findById");
+    FakeAsync.auto = sinon.stub(FakeAsync, "auto");
 
-    ProductRouter.__set__( "Product", FakeProductModel );
+    ProductRouter.__set__( {
+      "Product": FakeProductModel,
+      "async": FakeAsync
+    } );
 
     // File System
     FakeFileSystem = sinon.spy(FakeFileSystem);
@@ -29,8 +34,8 @@ describe('Product Router', function() {
     // Product Model
     FakeProductModel.reset();
     FakeProductModel.prototype.save.restore();
-    FakeProductModel.find.restore();
     FakeProductModel.findById.restore();
+    FakeAsync.auto.restore();
 
     // File System
     FakeFileSystem.reset();
@@ -43,23 +48,30 @@ describe('Product Router', function() {
     it('should return the results and 200 http status if it is successful', function(done) {
       // Given
       var res = { send: sinon.spy(), json: sinon.spy() };
-      var results = [{product: "Product 1"}];
-      FakeProductModel.find.yields(null, results );
+      var products = [{name: "Product 1"}];
+      FakeAsync.auto.yields(null, {
+        product_count: 1,
+        products: products
+      });
 
       // When
       ProductRouter.index({}, res);
 
       // Then
-      res.json.calledWith(200, results).should.equal(true);
+      res.json.calledWith(200, {
+        current_page: 1,
+        total_pages: 1,
+        products: products
+      } ).should.equal(true);
+
       res.send.called.should.equal(false);
-      FakeProductModel.find.calledOnce.should.equal(true);
       done();
     });
 
     it('should return 500 http status if there is any errors', function(done) {
       // Given
       var res = { send: sinon.spy(), json: sinon.spy() };
-      FakeProductModel.find.yields( true );
+      FakeAsync.auto.yields(true, null);
 
       // When
       ProductRouter.index({}, res);
@@ -67,7 +79,6 @@ describe('Product Router', function() {
       // Then
       res.json.called.should.equal(false);
       res.send.calledWith(500).should.equal(true);
-      FakeProductModel.find.calledOnce.should.equal(true);
       done();
     });
   } );
@@ -148,7 +159,7 @@ describe('Product Router', function() {
       done();
     });
 
-    it('ericchan should return 500 http status with error message', function( done ) {
+    it('should return 500 http status with error message', function( done ) {
       // Given
       var res = { send: sinon.spy(), json: sinon.spy() };
       var result = { name: "Product 1" };

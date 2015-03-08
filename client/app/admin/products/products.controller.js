@@ -4,7 +4,11 @@ angular.module('sendoApp')
   .controller('ProductsController', function ($scope, $location, Product) {
     var init = function() {
       $scope.$parent.page_title = CONFIG.APP_NAME + " | Products";
-      $scope.products = Product.query();
+      Product.query(function(resp) {
+        $scope.products = resp.products;
+        $scope.current_page = resp.current_page;
+        $scope.no_of_pages = resp.total_pages;
+      });
     };
 
     /* Event Handlers */

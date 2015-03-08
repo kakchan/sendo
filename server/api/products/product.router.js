@@ -2,14 +2,47 @@ var Product = require('./product.model');
 var fs = require('fs');
 var config = require('../../config/environment');
 var utils = require('../../components/utils');
+var async = require('async');
+var _ = require("lodash");
 
+// Parameters
+//   page
 exports.index = function(req, res) {
-  Product.find({}, function (err, products) {
+  var options = {
+    page: 1,
+    limit: config.max_results_in_page
+  };
+
+  // Default values if not specified
+  _.extend( options, req.query || {} );
+  options.page = parseInt(options.page,10);
+  options.skip = (options.page - 1) * options.limit;
+
+  async.auto( {
+    product_count: [ function( done ) {
+      Product
+        .find( {} )
+        .count( done );
+    } ],
+    products: [ "product_count", function( done ) {
+      Product
+        .find( {} )
+        .sort( { 'title': -1 } )
+        .skip( options.skip )
+        .limit( options.limit )
+        .exec( done );
+    } ]
+  }, function( err, results ) {
     if(err) {
       return res.send(500, err);
     }
-    res.json(200, products);
-  });
+    var total_pages = Math.ceil(results.product_count / options.limit);
+    res.json( 200, {
+      current_page: options.page,
+      total_pages: total_pages,
+      products: results.products
+    } );
+  } );
 };
 
 exports.get = function( req, res ) {

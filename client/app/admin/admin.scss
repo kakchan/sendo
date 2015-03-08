@@ -45,6 +45,7 @@ h4.section-header {
   padding-top: 15px;
 }
 
+.gray-text { color: #666; }
 .trash { color:rgb(209, 91, 71); cursor: pointer; }
 
 .navbar-brand { font-size: 22px; }
@@ -63,6 +64,11 @@ h4.section-header {
     .admin-page-title {
       padding-top: 4px;
       font-size: 18px;
+      display: inline-block;
+    }
+    .sd-pagination {
+      display: inline-block;
+      margin-left: 10px;
     }
   }
   .admin-page-head-right {

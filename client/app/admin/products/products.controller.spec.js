@@ -22,7 +22,11 @@ describe('Controller: ProductsController', function () {
     this.$httpBackend = _$httpBackend_;
     this.$httpBackend
       .expectGET('/api/products')
-      .respond(products);
+      .respond({
+        current_page: 1,
+        total_pages: 1,
+        products: products
+      });
 
     this.$scope = $rootScope.$new();
     this.ProductsController = $controller('ProductsController', {
@@ -35,9 +39,11 @@ describe('Controller: ProductsController', function () {
       expect(this.$scope.$parent.page_title).toBe("Sendo | Products");
     });
 
-    it('should attach a list of products to the scope', function () {
+    it('should attach a list of products and correct product information to the scope', function () {
       this.$httpBackend.flush();
       expect(this.$scope.products.length).toBe(2);
+      expect(this.$scope.current_page).toBe(1);
+      expect(this.$scope.no_of_pages).toBe(1);
     });
   });
 });
