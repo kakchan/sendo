@@ -27,7 +27,7 @@ exports.index = function(req, res) {
     products: [ "product_count", function( done ) {
       Product
         .find( {} )
-        .sort( { 'title': -1 } )
+        .sort( { 'title': 1 } )
         .skip( options.skip )
         .limit( options.limit )
         .exec( done );
