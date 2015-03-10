@@ -44,7 +44,7 @@ var all = {
   },
 
   upload_files_path: ".tmp/uploads/",
-  max_results_in_page: 5
+  max_results_in_page: 20
 };
 
 // Export the config object based on the NODE_ENV

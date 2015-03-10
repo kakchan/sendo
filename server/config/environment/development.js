@@ -8,6 +8,6 @@ module.exports = {
     uri: 'mongodb://localhost/sendo-dev'
   },
 
-  seedDB: false,
+  seedDB: true,
   upload_files_path: ".tmp/development/uploads/"
 };

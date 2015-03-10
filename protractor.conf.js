@@ -48,6 +48,17 @@ exports.config = {
         extensions: []
       },
       specs: [
+        'e2e/admin/products/admin_add_product.spec.js'
+      ]
+    },
+    {
+      'browserName': 'chrome',
+      "chromeOptions": {
+        binary: "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome",
+        args: [],
+        extensions: []
+      },
+      specs: [
         'e2e/admin/products/admin_edit_product.spec.js'
       ]
     },

@@ -8,8 +8,9 @@
 var async = require('async');
 var User = require('../admin/api/user/user.model');
 var Product = require('../admin/api/products/product.model');
+var sample_products = require("../sample_data/sample_products");
 
-function create_users( done ) {
+var create_users = function( done ) {
   User.find({}).remove(function () {
     User.create({
       provider: 'local',
@@ -27,26 +28,18 @@ function create_users( done ) {
       done( err );
     });
   });
-}
+};
 
-function create_products( done ) {
+var create_products = function( done ) {
   Product.find({}).remove(function () {
-    Product.create({
-      title: "Product 1",
-      description: "Product Description 1",
-      page_title: "Product Page Title 1",
-      meta_description: "Product Meta Description 1"
-    }, {
-      title: "Product 2",
-      description: "Product Description 2",
-      page_title: "Product Page Title 2",
-      meta_description: "Product Meta Description 2"
+    async.eachSeries(sample_products, function create_product( product, create_product_done ) {
+      Product.create( product, create_product_done );
     }, function( err ) {
       console.log('finished populating products');
       done( err );
-    });
+    } );
   });
-}
+};
 
 var init = function( done ) {
   async.waterfall( [

@@ -4,6 +4,7 @@ var config = require("../../../config/environment/index");
 var should = require('should');
 var utils = require("../../utils");
 var test_process = require("../../test_process");
+var sample_products = require("../../../sample_data/sample_products");
 
 describe('Product Router - Integration Test', function () {
   before(function (done) {
@@ -32,25 +33,11 @@ describe('Product Router - Integration Test', function () {
     describe("Success Scenarios", function () {
       it( "should return correct values if no queries specified", function( done ) {
         utils.get_admin_products({}, function (err, resp, json) {
-          var expected_products = [
-            {
-              "title": "Product 1",
-              "description": "Product Description 1",
-              "page_title": "Product Page Title 1",
-              "meta_description": "Product Meta Description 1",
-              "images": []
-            },
-            {
-              "title": "Product 2",
-              "description": "Product Description 2",
-              "page_title": "Product Page Title 2",
-              "meta_description": "Product Meta Description 2",
-              "images": []
-            }
-          ];
+          var expected_products = sample_products;
+
           json.current_page.should.equal(1);
-          json.total_pages.should.equal(1);
-          json.products.length.should.equal(2);
+          json.total_pages.should.equal(Math.ceil(sample_products.length / config.max_results_in_page));
+          json.products.length.should.equal(config.max_results_in_page);
           utils.partial_array_eql(json.products, expected_products);
           done();
         });
@@ -58,17 +45,9 @@ describe('Product Router - Integration Test', function () {
 
       it( 'should return correct values if "limit" set to one', function( done ) {
         utils.get_admin_products({ limit: 1 }, function (err, resp, json) {
-          var expected_products = [
-            {
-              "title": "Product 1",
-              "description": "Product Description 1",
-              "page_title": "Product Page Title 1",
-              "meta_description": "Product Meta Description 1",
-              "images": []
-            }
-          ];
+          var expected_products = sample_products[0];
           json.current_page.should.equal(1);
-          json.total_pages.should.equal(2);
+          json.total_pages.should.equal(25);
           json.products.length.should.equal(1);
           utils.partial_array_eql(json.products, expected_products);
           done();
@@ -77,17 +56,9 @@ describe('Product Router - Integration Test', function () {
 
       it( 'should return correct values if "page" set to two', function( done ) {
         utils.get_admin_products({ limit: 1, page: 2 }, function (err, resp, json) {
-          var expected_products = [
-            {
-              "title": "Product 2",
-              "description": "Product Description 2",
-              "page_title": "Product Page Title 2",
-              "meta_description": "Product Meta Description 2",
-              "images": []
-            }
-          ];
+          var expected_products = sample_products[1];
           json.current_page.should.equal(2);
-          json.total_pages.should.equal(2);
+          json.total_pages.should.equal(25);
           json.products.length.should.equal(1);
           utils.partial_array_eql(json.products, expected_products);
           done();
