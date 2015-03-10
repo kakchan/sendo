@@ -2,7 +2,7 @@
 
 var should = require('should');
 var rewire = require('rewire');
-var ProductRouter = rewire("../../../api/products/product.router");
+var ProductRouter = rewire("../../../admin/api/products/product.router");
 var FakeAsync = require('../fake/FakeAsync');
 var FakeProductModel = require('../fake/FakeProductModel');
 var FakeFileSystem = require('../fake/FakeFileSystem');

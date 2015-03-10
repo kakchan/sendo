@@ -21,7 +21,7 @@ describe('Controller: ProductsController', function () {
 
     this.$httpBackend = _$httpBackend_;
     this.$httpBackend
-      .expectGET('/api/products')
+      .expectGET('/admin/api/products')
       .respond({
         current_page: 1,
         total_pages: 1,

@@ -31,7 +31,7 @@ angular.module('sendoApp')
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 
-        $http.post('/auth/local', {
+        $http.post('/admin/auth/local', {
           email: user.email,
           password: user.password
         }).

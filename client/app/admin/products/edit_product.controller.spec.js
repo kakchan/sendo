@@ -35,7 +35,7 @@ describe('Controller: EditProductController', function () {
       };
       this.$httpBackend = _$httpBackend_;
       this.$httpBackend
-        .expectGET('/api/products/' + product_id)
+        .expectGET('/admin/api/products/' + product_id)
         .respond(product);
 
       this.$scope = $rootScope.$new();

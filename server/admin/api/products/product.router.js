@@ -1,7 +1,7 @@
 var Product = require('./product.model');
 var fs = require('fs');
-var config = require('../../config/environment');
-var utils = require('../../components/utils');
+var config = require('../../../config/environment');
+var utils = require('../../../components/utils');
 var async = require('async');
 var _ = require("lodash");
 

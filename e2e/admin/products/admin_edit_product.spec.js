@@ -68,7 +68,6 @@ describe('Admin Add Product Page View', function() {
         });
 
         it("should direct users to the edit page", function() {
-          // should direct users to the edit page
           expect(browser.getCurrentUrl()).toMatch(/\/admin\/products\/edit/);
           expect(browser.getTitle()).toEqual('Sendo | Edit Product');
         });

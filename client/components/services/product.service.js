@@ -2,7 +2,7 @@
 
 angular.module('sendoApp')
   .factory('Product', function ($resource) {
-    return $resource('/api/products/:id/:controller', {
+    return $resource('/admin/api/products/:id/:controller', {
       id: '@_id'
     }, {
       query: {

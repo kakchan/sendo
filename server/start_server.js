@@ -13,6 +13,9 @@ var config = require('./config/environment');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
+mongoose.connection.on("error", function(err, data){
+  console.log( "ERROR: " + err.message );
+});
 
 var app = express();
 var setup_server = function() {
@@ -34,7 +37,7 @@ var setup_and_start_server = function( done ) {
 };
 
 var init = function( done ) {
-// Populate DB with sample data
+  // Populate DB with sample data
   if(config.seedDB) {
     require('./config/seed')( setup_and_start_server.bind( null, done ) );
   } else {

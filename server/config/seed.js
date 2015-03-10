@@ -6,8 +6,8 @@
 'use strict';
 
 var async = require('async');
-var User = require('../api/user/user.model');
-var Product = require('../api/products/product.model');
+var User = require('../admin/api/user/user.model');
+var Product = require('../admin/api/products/product.model');
 
 function create_users( done ) {
   User.find({}).remove(function () {

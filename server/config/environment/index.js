@@ -94,11 +94,14 @@ _.extend( config, {
   get_base_url: function() {
     return "http://" + config.host + ":" + config.port;
   },
+  get_admin_base_url: function() {
+    return this.get_base_url() + "/admin";
+  },
   get_admin_login_api_url: function() {
-    return this.get_base_url() + "/auth/local";
+    return this.get_admin_base_url() + "/auth/local";
   },
   get_admin_product_api_index_url: function() {
-    return this.get_base_url() + "/api/products";
+    return this.get_admin_base_url() + "/api/products";
   }
 });
 

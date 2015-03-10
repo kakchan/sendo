@@ -2,7 +2,7 @@
 
 var express = require('express');
 var ProductRouter = require('./product.router');
-var config = require('../../config/environment');
+var config = require('../../../config/environment');
 var auth = require('../../auth/auth.service');
 var multer = require('multer');
 var router = express.Router();

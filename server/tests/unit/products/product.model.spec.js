@@ -1,7 +1,7 @@
 'use strict';
 
 var should = require('should');
-var Product = require('./../../../api/products/product.model.js');
+var Product = require('../../../admin/api/products/product.model');
 var async = require('async');
 
 describe('Product Model', function() {
