@@ -28,7 +28,7 @@ To run **server side** unit tests and integration tests
 ```
 **Note**: If you would like to use **Webstorm** with Mocha Plugin, make sure set the environment variable **NODE_ENV** to **test**
 
-The following command is to run both client/server unit tests
+The following command is to run both client/server unit tests and integration tests
 ```shell
 	grunt test
 ```
