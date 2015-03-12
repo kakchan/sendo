@@ -3,43 +3,43 @@
 var AdminAddProductPage = function() {
   this.messagePanelEl = element(by.css('.message-panel-container'));
 
-  this.pageContainerEl = element(by.css('.page-container'));
+  this.page_container_el = element(by.css('.page-container'));
   this.productTitleLabel = element(by.css('.product-title-label'));
 
-  this.pageTitleEl = this.pageContainerEl.element(by.css('.admin-page-title'));
-  this.pageTitleLinkEl = this.pageContainerEl.element(by.css('.admin-page-title-link'));
+  this.page_title_el = this.page_container_el.element(by.css('.admin-page-title'));
+  this.pageTitleLinkEl = this.page_container_el.element(by.css('.admin-page-title-link'));
 
-  this.titleFieldEl = this.pageContainerEl.element(by.id('product_title'));
-  this.descriptionFieldEl = this.pageContainerEl.element(by.id('product_description'));
+  this.titleFieldEl = this.page_container_el.element(by.id('product_title'));
+  this.descriptionFieldEl = this.page_container_el.element(by.id('product_description'));
 
   // Photo
-  this.uploadFileInputFieldEl = this.pageContainerEl.element(by.css('.file-upload-field'));
-  this.photoThumbnailContainerEl = this.pageContainerEl.element(by.css('.photo-thumbnails-container'));
+  this.uploadFileInputFieldEl = this.page_container_el.element(by.css('.file-upload-field'));
+  this.photoThumbnailContainerEl = this.page_container_el.element(by.css('.photo-thumbnails-container'));
 
-  this.pageTitleFieldEl = this.pageContainerEl.element(by.css("DIV[element-id='page_title']"));
+  this.pageTitleFieldEl = this.page_container_el.element(by.css("DIV[element-id='page_title']"));
   this.pageTitleInputFieldEl = this.pageTitleFieldEl.element(by.id('page_title'));
   this.pageTitleFieldCharacterCountLabelEl = this.pageTitleFieldEl.element(by.css(".input-field-chars-count"));
 
 
-  this.metaDescriptionFieldEl = this.pageContainerEl.element(by.css("DIV[element-id='meta_description']"));
+  this.metaDescriptionFieldEl = this.page_container_el.element(by.css("DIV[element-id='meta_description']"));
   this.metaDescriptionInputFieldEl = this.metaDescriptionFieldEl.element(by.id('meta_description'));
   this.metaDescriptionFieldCharacterCountLabelEl = this.metaDescriptionFieldEl.element(by.css(".input-field-chars-count"));
 
-  this.validationMessageEl = this.pageContainerEl.element(by.css('.validation-message'));
+  this.validationMessageEl = this.page_container_el.element(by.css('.validation-message'));
 
-  this.saveButtonEl = this.pageContainerEl.element(by.css('.btn-save'));
+  this.saveButtonEl = this.page_container_el.element(by.css('.btn-save'));
 };
 
 AdminAddProductPage.prototype.visit_by_clicking_add_product = function() {
   var products_page = require('./admin_products.po.js');
   products_page.visit();
-  products_page.addProductButtonEl.click();
+  products_page.add_product_button_el.click();
 };
 
 AdminAddProductPage.prototype.visit_by_click_product = function( index ) {
   var products_page = require('./admin_products.po.js');
   products_page.visit();
-  products_page.productRowEls.get(index).click();
+  products_page.product_row_els.get(index).click();
 };
 
 module.exports = new AdminAddProductPage();

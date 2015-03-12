@@ -15,7 +15,7 @@ describe('Admin Add Product Page View', function() {
         expect(browser.getTitle()).toEqual('Sendo | Edit Product');
 
         // should include "Products > Add Product" admin page header
-        expect(this._edit_product_page.pageTitleEl.getText()).toBe("Products > Edit Product > Product 01");
+        expect(this._edit_product_page.page_title_el.getText()).toBe("Products > Edit Product > Product 01");
 
         // should contain "Products" link
         expect(this._edit_product_page.pageTitleLinkEl.isDisplayed()).toBe(true);

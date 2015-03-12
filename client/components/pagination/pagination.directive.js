@@ -41,9 +41,14 @@ angular.module("sendoApp")
           }
         } );
 
+        var go_to_page = function( page_no ) {
+          $scope.currentPage = page_no;
+          $scope.goToPageClick( page_no );
+        };
+
         /* Event Handlers */
         $scope.pageClick = function( event, page_no ) {
-          $scope.goToPageClick( page_no );
+          go_to_page( page_no );
         };
 
         $scope.prevTenPageClick = function( event ) {
@@ -51,7 +56,7 @@ angular.module("sendoApp")
           if ( page_no < 1 ) {
             page_no = 1;
           }
-          $scope.goToPageClick( page_no );
+          go_to_page( page_no );
         };
 
         $scope.nextTenPageClick = function( event ) {
@@ -61,7 +66,7 @@ angular.module("sendoApp")
           if ( page_no > $scope.noOfPages ) {
             page_no = $scope.noOfPages;
           }
-          $scope.goToPageClick( page_no );
+          go_to_page( page_no );
         };
       }
     };

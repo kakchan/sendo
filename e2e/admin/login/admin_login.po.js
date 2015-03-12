@@ -1,15 +1,15 @@
 'use strict';
 
 var AdminLoginPage = function() {
-  this.pageContainerEl = element(by.css('.page-container'));
+  this.page_container_el = element(by.css('.page-container'));
 
-  this.pageTitleEl = this.pageContainerEl.element(by.css('.admin-page-title'));
-  this.emailFieldEl = this.pageContainerEl.element(by.name('email'));
-  this.passwordFieldEl = this.pageContainerEl.element(by.name('password'));
-  this.loginButtonEl = this.pageContainerEl.element(by.css('.btn-login'));
-  this.emailValidationMessageEl = this.pageContainerEl.element(by.css('.email-validation-message'));
-  this.mandatoryFieldsValidationMessageEl = this.pageContainerEl.element(by.css('.mandatory-fields-validation-message'));
-  this.serverValidationMessageEl = this.pageContainerEl.element(by.css('.server-validation-message'));
+  this.page_title_el = this.page_container_el.element(by.css('.admin-page-title'));
+  this.emailFieldEl = this.page_container_el.element(by.name('email'));
+  this.passwordFieldEl = this.page_container_el.element(by.name('password'));
+  this.loginButtonEl = this.page_container_el.element(by.css('.btn-login'));
+  this.emailValidationMessageEl = this.page_container_el.element(by.css('.email-validation-message'));
+  this.mandatoryFieldsValidationMessageEl = this.page_container_el.element(by.css('.mandatory-fields-validation-message'));
+  this.serverValidationMessageEl = this.page_container_el.element(by.css('.server-validation-message'));
 };
 
 AdminLoginPage.prototype.login = function() {

@@ -9,6 +9,6 @@ describe('Home Page View', function() {
   });
 
   it('should include jumbotron with correct data', function() {
-    expect(page.pageContainerEl.getText()).toBe("Home");
+    expect(page.page_container_el.getText()).toBe("Home");
   });
 });

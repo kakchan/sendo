@@ -20,7 +20,7 @@ describe('Admin Add Product Page View', function() {
         expect(browser.getTitle()).toEqual('Sendo | Add Product');
 
         // should include "Products > Add Product" admin page header
-        expect(this._edit_product_page.pageTitleEl.getText()).toBe("Products > Add Product");
+        expect(this._edit_product_page.page_title_el.getText()).toBe("Products > Add Product");
 
         // should contain "Products" link
         expect(this._edit_product_page.pageTitleLinkEl.isDisplayed()).toBe(true);
@@ -76,7 +76,7 @@ describe('Admin Add Product Page View', function() {
           // going back to the Product page, number of products should be incremented by 1
           this._edit_product_page.pageTitleLinkEl.click();
           expect(browser.getTitle()).toEqual('Sendo | Products');
-          expect(this._products_page.productRowEls.count()).toBe(this._products_page.product_count);
+          expect(this._products_page.product_row_els.count()).toBe(this._products_page.product_count);
         });
       });
     } );

@@ -11,7 +11,7 @@ describe('Admin Login Page View', function() {
     expect(browser.getTitle()).toBe("Sendo | Login");
 
     // should include "Login" admin page header
-    expect(this._login_page.pageTitleEl.getText()).toBe("Login");
+    expect(this._login_page.page_title_el.getText()).toBe("Login");
 
     // should include email and password fields
     expect(this._login_page.emailFieldEl.isDisplayed()).toBe(true);

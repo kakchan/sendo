@@ -21,5 +21,13 @@ angular.module('sendoApp')
       $location.path("/admin/products/edit/" + selected_product._id );
     };
 
+    $scope.go_to_page_click = function( page ) {
+      Product.query({ page: page }, function(resp) {
+        $scope.products = resp.products;
+        $scope.current_page = resp.current_page;
+        $scope.no_of_pages = resp.total_pages;
+      });
+    };
+
     init();
   });
