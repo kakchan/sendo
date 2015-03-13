@@ -1,15 +1,15 @@
 <div class="sd-pagination-container" ng-show="currentPage && noOfPages > 1">
   <span class="gray-text" ng-if="noOfPages <= 10">Pages:</span>
   <div class="sd-pagination-page-link" ng-if="noOfPages > 10">
-    <a ng-if="currentPage - 5 > 1" ng-click="prevTenPageClick($event)">&lt; Prev 10</a>
-    <span class="gray-text" ng-if="currentPage - 5 <= 1">&lt; Prev 10 &nbsp;</span>
+    <a class="prev-ten-page" ng-show="currentPage - 5 > 1" ng-click="prevTenPageClick($event)">&lt; Prev 10</a>
+    <span class="prev-ten-page-disabled pagination-disabled" ng-show="currentPage - 5 <= 1">&lt; Prev 10 &nbsp;</span>
   </div>
   <div title="Go to page {{page_no}}" ng-class="{ active: page_no == currentPage }" ng-click="pageClick($event, page_no)" class="sd-pagination-page-no sd-pagination-page-link" ng-repeat="page_no in page_nos">
     {{page_no}}
   </div>
   <div class="sd-pagination-page-link" ng-if="noOfPages > 10">
-    <a ng-if="currentPage < noOfPages - 4" ng-click="nextTenPageClick($event)">Next 10 &gt;</a>
-    <span class="gray-text" ng-if="currentPage >= noOfPages - 4">&nbsp; Next 10 &gt;</span>
+    <a class="next-ten-page" ng-show="currentPage < noOfPages - 4" ng-click="nextTenPageClick($event)">Next 10 &gt;</a>
+    <span class="next-ten-page-disabled pagination-disabled" ng-show="currentPage >= noOfPages - 4">&nbsp; Next 10 &gt;</span>
     &nbsp;
   </div>
 </div>

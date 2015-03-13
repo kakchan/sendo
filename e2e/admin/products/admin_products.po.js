@@ -9,6 +9,12 @@ var AdminProductsPage = function() {
 
   this.pagination_el = this.page_container_el.element(by.css('.sd-pagination'));
   this.result_list_container_el = this.page_container_el.element(by.css('.list-container'));
+
+  this.pagination_prev_ten_page_el = this.page_container_el.element(by.css('.prev-ten-page'));
+  this.pagination_prev_ten_page_disabled_el = this.page_container_el.element(by.css('.prev-ten-page-disabled'));
+
+  this.pagination_next_ten_page_el = this.page_container_el.element(by.css('.next-ten-page'));
+  this.pagination_next_ten_page_disabled_el = this.page_container_el.element(by.css('.next-ten-page-disabled'));
 };
 
 AdminProductsPage.prototype.visit = function() {

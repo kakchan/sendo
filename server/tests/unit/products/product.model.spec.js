@@ -2,7 +2,6 @@
 
 var should = require('should');
 var Product = require('../../../admin/api/products/product.model');
-var async = require('async');
 
 describe('Product Model', function() {
   beforeEach(function(done) {

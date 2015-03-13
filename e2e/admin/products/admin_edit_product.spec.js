@@ -15,26 +15,26 @@ describe('Admin Add Product Page View', function() {
         expect(browser.getTitle()).toEqual('Sendo | Edit Product');
 
         // should include "Products > Add Product" admin page header
-        expect(this._edit_product_page.page_title_el.getText()).toBe("Products > Edit Product > Product 01");
+        expect(this._edit_product_page.page_title_el.getText()).toBe("Products > Edit Product > Product 001");
 
         // should contain "Products" link
         expect(this._edit_product_page.pageTitleLinkEl.isDisplayed()).toBe(true);
 
         // should contain Title field
         expect(this._edit_product_page.titleFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.titleFieldEl.getAttribute('value')).toBe("Product 01");
+        expect(this._edit_product_page.titleFieldEl.getAttribute('value')).toBe("Product 001");
 
         // should contain Description field
         expect(this._edit_product_page.descriptionFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.descriptionFieldEl.getAttribute('value')).toBe("Product Description 01");
+        expect(this._edit_product_page.descriptionFieldEl.getAttribute('value')).toBe("Product Description 001");
 
         // should contain Page Title field
         expect(this._edit_product_page.pageTitleInputFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.pageTitleInputFieldEl.getAttribute('value')).toBe("Product Page Title 01");
+        expect(this._edit_product_page.pageTitleInputFieldEl.getAttribute('value')).toBe("Product Page Title 001");
 
         // should contain Meta Description field
         expect(this._edit_product_page.metaDescriptionInputFieldEl.isDisplayed()).toBe(true);
-        expect(this._edit_product_page.metaDescriptionInputFieldEl.getAttribute('value')).toBe("Product Meta Description 01");
+        expect(this._edit_product_page.metaDescriptionInputFieldEl.getAttribute('value')).toBe("Product Meta Description 001");
 
         // should contain Save button
         expect(this._edit_product_page.saveButtonEl.isDisplayed()).toBe(true);

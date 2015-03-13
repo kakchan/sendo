@@ -2,7 +2,7 @@
 var request = require("request");
 var config = require("../../../config/environment/index");
 var should = require('should');
-var utils = require("../../utils");
+var utils = require("../../test_utils");
 var test_process = require("../../test_process");
 var sample_products = require("../../../sample_data/sample_products");
 
@@ -47,7 +47,7 @@ describe('Product Router - Integration Test', function () {
         utils.get_admin_products({ limit: 1 }, function (err, resp, json) {
           var expected_products = sample_products[0];
           json.current_page.should.equal(1);
-          json.total_pages.should.equal(25);
+          json.total_pages.should.equal(205);
           json.products.length.should.equal(1);
           utils.partial_array_eql(json.products, expected_products);
           done();
@@ -58,7 +58,7 @@ describe('Product Router - Integration Test', function () {
         utils.get_admin_products({ limit: 1, page: 2 }, function (err, resp, json) {
           var expected_products = sample_products[1];
           json.current_page.should.equal(2);
-          json.total_pages.should.equal(25);
+          json.total_pages.should.equal(205);
           json.products.length.should.equal(1);
           utils.partial_array_eql(json.products, expected_products);
           done();

@@ -9,5 +9,14 @@ module.exports = {
       }
     }
     return messages;
+  },
+
+  pad_zero: function( obj, digits ) {
+    var str = obj + "";
+    var len = str.length;
+    for ( var i = len; i < digits; i++ ) {
+      str = "0" + str;
+    }
+    return str;
   }
 };

@@ -1,11 +1,10 @@
+var utils = require("../components/utils");
 var create_sample_products = function() {
-  var no_of_products = 25;
+  var no_of_products = 205;
   var products = [];
   for ( var i=0; i<no_of_products; i++) {
     var product_id = i+1;
-    if ( (product_id + "").length === 1 ) {
-      product_id = "0" + product_id;
-    }
+    product_id = utils.pad_zero(product_id, 3);
     products.push( {
       title: "Product " + product_id,
       description: "Product Description " + product_id,
