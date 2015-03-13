@@ -50,8 +50,17 @@ describe('Admin Products Page View', function() {
         var product_list_row_els = products_page.result_list_container_el.all( by.css( ".product-list-row" ) );
         expect( product_list_row_els.count() ).toEqual( 20 );
         product_list_row_els.each( function( product_list_row_el, index ) {
+          var image_el = product_list_row_el.element(by.css(".product-image"));
           var title_el = product_list_row_el.element(by.css(".product-list-product-title"));
           var description_el = product_list_row_el.element(by.css('.product-list-product-description'));
+          expect( image_el.isDisplayed() ).toEqual( true );
+          if (index === 0) {
+            // display feature image if there is one
+            expect( image_el.getAttribute("src") ).toMatch( "/uploads/photos/products/nikon_camera_1.JPG" );
+          } else {
+            // if no images in the product, should display no_image image
+            expect( image_el.getAttribute("src") ).toMatch( "/assets/images/no_image.png" );
+          }
           expect( title_el.getText() ).toEqual( sample_products[ index ].title );
           expect( description_el.getText() ).toEqual( sample_products[ index ].description );
         } );
@@ -74,7 +83,7 @@ describe('Admin Products Page View', function() {
         } );
       });
 
-      iit("should Next/Prev 10 Page Click", function() {
+      it("should Next/Prev 10 Page Click", function() {
         var products_page = this._products_page;
 
         // Given - Pagination

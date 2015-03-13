@@ -17,7 +17,7 @@
   <label for="product_description">Description</label>
   <input class="form-control" type="text" id="product_description" ng-model="product.description"/>
 
-  <div class="sd-file-upload" on-file-changed="file_upload_changed" on-file-delete="on_file_delete" on-mark-as-featured="on_mark_as_featured" images="product.images"></div>
+  <div class="sd-file-upload" file-path="config.product_photo_uri" on-file-changed="file_upload_changed" on-file-delete="on_file_delete" on-mark-as-featured="on_mark_as_featured" images="product.images"></div>
   <!-- SEO -->
   <h4 class="section-header">Search Engines</h4>
   <div class="sd-input-field" element-title="Page Title" element-id="page_title" model="product.page_title" max-length="70"></div>

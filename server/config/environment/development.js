@@ -9,5 +9,5 @@ module.exports = {
   },
 
   seedDB: true,
-  upload_files_path: ".tmp/development/uploads/"
+  files_root_path: ".tmp/development"
 };

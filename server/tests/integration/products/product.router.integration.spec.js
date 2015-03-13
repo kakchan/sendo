@@ -33,7 +33,14 @@ describe('Product Router - Integration Test', function () {
     describe("Success Scenarios", function () {
       it( "should return correct values if no queries specified", function( done ) {
         utils.get_admin_products({}, function (err, resp, json) {
-          var expected_products = sample_products;
+          var expected_products = sample_products.map( function( sample_product ) {
+            return {
+              title: sample_product.title,
+              description: sample_product.description,
+              page_title: sample_product.page_title,
+              meta_description: sample_product.meta_description
+            };
+          } );
 
           json.current_page.should.equal(1);
           json.total_pages.should.equal(Math.ceil(sample_products.length / config.max_results_in_page));

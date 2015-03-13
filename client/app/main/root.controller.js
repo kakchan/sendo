@@ -1,8 +1,18 @@
 'use strict';
 
 angular.module('sendoApp')
-  .controller('RootController', function ($scope, $http) {
+  .controller('RootController', function ($scope, GeneralService) {
     $scope.page_title = "Sendo";
+
+    var init = function() {
+      $scope.get_config();
+    };
+
+    $scope.get_config = function() {
+      GeneralService.config(function(resp) {
+        $scope.config = resp;
+      });
+    };
 
     $scope.showMessagePanel = function( text, duration, loading, error ) {
       if ( text === undefined || text.trim() === "" ) { return; }
@@ -22,4 +32,6 @@ angular.module('sendoApp')
     $scope.hideMessagePanel = function() {
       $scope.messagePanelShow = false;
     };
+
+    init();
   });

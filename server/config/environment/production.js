@@ -21,5 +21,5 @@ module.exports = {
             'mongodb://localhost/sendo'
   },
 
-  upload_files_path: "public/uploads"
+  files_root_path: "public"
 };

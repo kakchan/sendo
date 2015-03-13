@@ -14,5 +14,5 @@ module.exports = {
   },
 
   seedDB: true,
-  upload_files_path: ".tmp/test/uploads/"
+  files_root_path: ".tmp/test"
 };

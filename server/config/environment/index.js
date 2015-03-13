@@ -2,7 +2,7 @@
 
 var path = require('path');
 var _ = require('lodash');
-var fs = require('fs.extra');
+var fs = require('fs-extra');
 
 function requiredProcessEnv(name) {
   if(!process.env[name]) {
@@ -42,8 +42,7 @@ var all = {
     }
   },
 
-  upload_files_path: ".tmp/uploads",
-  log_files_path: ".tmp/logs",
+  files_root_path: ".tmp",
   max_results_in_page: 20
 };
 
@@ -54,14 +53,17 @@ var config = _.merge(
   require('./' + process.env.NODE_ENV + '.js') || {});
 
 // upload paths
-config.product_photo_path = config.upload_files_path + 'photos/products';
+config.product_photo_uri = '/uploads/photos/products';
+config.product_photo_path = config.files_root_path + config.product_photo_uri;
+
+config.log_files_root_path = config.files_root_path + "/logs";
 
 var remove_folder = function(path) {
-  fs.rmrfSync( path );
+  fs.removeSync( path );
 };
 
 var create_folder = function(path) {
-  if ( fs.existsSync( path ) ) {
+  if ( fs.ensureDirSync( path ) ) {
     return;
   }
   fs.mkdirpSync(path);
@@ -73,15 +75,16 @@ var recreate_file_path = function( path ) {
 };
 
 if ( config.env === "test" ) {
-  [ "product_photo_path", "log_files_path" ].forEach( function(fn_name){
+  [ "product_photo_path", "log_files_root_path" ].forEach( function(fn_name){
     recreate_file_path(config[fn_name]);
   } );
 } else {
-  [ "product_photo_path", "log_files_path" ].forEach( function(fn_name){
+  [ "product_photo_path", "log_files_root_path" ].forEach( function(fn_name){
     create_folder(config[fn_name]);
   } );
 }
-
+// copy dummy images
+fs.copySync("./e2e/test_files/products", config.product_photo_path);
 
 _.extend( config, {
   get_base_url: function() {

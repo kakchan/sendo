@@ -8,7 +8,8 @@ angular.module('sendoApp')
         onFileChanged: "=",
         onFileDelete: "=",
         onMarkAsFeatured: "=",
-        images: "="
+        images: "=",
+        filePath: "="
       },
       replace: true,
       templateUrl: "components/file_upload/file_upload.html",

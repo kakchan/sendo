@@ -18,6 +18,7 @@ angular.module('sendoApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/admin/products');
+          $scope.get_config();
         })
         .catch( function(err) {
           $location.path('/admin');

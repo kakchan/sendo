@@ -12,6 +12,26 @@ A:hover, A:focus {
   color: #333;
 }
 
+.list-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  .list-box-image {
+    width: 80px;
+  }
+
+  > DIV.list-box-details {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    width: 80%;
+    float: left;
+    padding-left: 15px;
+  }
+}
+
 .validation-message {
   background-color: #f2dede;
   padding: 10px;
