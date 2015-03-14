@@ -52,53 +52,76 @@ var config = _.merge(
   all,
   require('./' + process.env.NODE_ENV + '.js') || {});
 
-// upload paths
-config.product_photo_uri = '/uploads/photos/products';
-config.product_photo_path = config.files_root_path + config.product_photo_uri;
+// TODO: this method need to be moved
+var setup_file_directories = function() {
+  // upload paths
+  config.product_photo_uri = '/uploads/photos/products';
+  config.product_photo_path = config.files_root_path + config.product_photo_uri;
 
-config.log_files_root_path = config.files_root_path + "/logs";
+  config.themes_path = config.files_root_path + "/themes";
 
-var remove_folder = function(path) {
-  fs.removeSync( path );
-};
+  config.log_files_root_path = config.files_root_path + "/logs";
 
-var create_folder = function(path) {
-  if ( fs.ensureDirSync( path ) ) {
-    return;
+  var remove_folder = function(path) {
+    fs.removeSync( path );
+  };
+
+  var create_folder = function(path) {
+    if ( fs.ensureDirSync( path ) ) {
+      return;
+    }
+    fs.mkdirpSync(path);
+  };
+
+  var recreate_file_path = function( path ) {
+    remove_folder( path );
+    create_folder( path );
+  };
+
+  var file_path_names = ["product_photo_path", "log_files_root_path", "themes_path"];
+  if ( config.env === "test" ) {
+    file_path_names.forEach( function(fn_name){
+      recreate_file_path(config[fn_name]);
+    } );
+  } else {
+    file_path_names.forEach( function(fn_name){
+      create_folder(config[fn_name]);
+    } );
   }
-  fs.mkdirpSync(path);
+  // copy dummy images
+  fs.copySync("./e2e/test_files/products", config.product_photo_path);
 };
 
-var recreate_file_path = function( path ) {
-  remove_folder( path );
-  create_folder( path );
+var add_api_urls_to_config = function() {
+  _.extend( config, {
+    get_base_url: function() {
+      return "http://" + config.host + ":" + config.port;
+    },
+    get_admin_base_url: function() {
+      return this.get_base_url() + "/admin";
+    },
+
+    /* Login */
+    get_admin_login_api_url: function() {
+      return this.get_admin_base_url() + "/auth/local";
+    },
+
+    /* Products */
+    get_admin_product_api_index_url: function() {
+      return this.get_admin_base_url() + "/api/products";
+    },
+
+    /* Themes */
+    get_admin_theme_api_index_url: function() {
+      return this.get_admin_base_url() + "/api/themes";
+    }
+  });
 };
 
-if ( config.env === "test" ) {
-  [ "product_photo_path", "log_files_root_path" ].forEach( function(fn_name){
-    recreate_file_path(config[fn_name]);
-  } );
-} else {
-  [ "product_photo_path", "log_files_root_path" ].forEach( function(fn_name){
-    create_folder(config[fn_name]);
-  } );
-}
-// copy dummy images
-fs.copySync("./e2e/test_files/products", config.product_photo_path);
+var init = function() {
+  setup_file_directories();
+  add_api_urls_to_config();
+};
 
-_.extend( config, {
-  get_base_url: function() {
-    return "http://" + config.host + ":" + config.port;
-  },
-  get_admin_base_url: function() {
-    return this.get_base_url() + "/admin";
-  },
-  get_admin_login_api_url: function() {
-    return this.get_admin_base_url() + "/auth/local";
-  },
-  get_admin_product_api_index_url: function() {
-    return this.get_admin_base_url() + "/api/products";
-  }
-});
-
+init();
 module.exports = config;

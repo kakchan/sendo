@@ -4,6 +4,8 @@ var _started = false;
 var start = function(done) {
   if ( _started ) {
     console.log( "Server has already been started" );
+    done && done();
+    return;
   }
   start_server(function() {
     _started = true;

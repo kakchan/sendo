@@ -1,4 +1,4 @@
-var config = require("../config/environment");
+var config = require("../../config/environment/index");
 var request = require("request");
 var should = require("should");
 
@@ -21,19 +21,30 @@ module.exports = {
     } )
   },
 
-  get_admin_products: function( options, done ) {
+  /* Common */
+  admin_request: function( url, options, done ) {
     var me = this;
+    options = options || {};
+
     request( {
-      url: config.get_admin_product_api_index_url(),
+      url: url,
       headers: {
         "Authorization": "Bearer " + me.access_token
       },
-      qs: options || {},
+      qs: options.qs || {},
       json: true
     }, done );
   },
 
+  /* Products */
+  get_admin_products: function( options, done ) {
+    this.admin_request( config.get_admin_product_api_index_url(), options, done );
+  },
 
+  /* Themes */
+  get_admin_themes: function( options, done ) {
+    this.admin_request( config.get_admin_theme_api_index_url(), options, done );
+  },
 
 
   // Helper Methods

@@ -11,6 +11,7 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/admin/api/users', require('./admin/api/user'));
   app.use('/admin/api/products', require('./admin/api/products'));
+  app.use('/admin/api/themes', require('./admin/api/themes'));
   app.use('/admin/auth', require('./admin/auth'));
   app.use('/admin/general', require('./admin/general'));
 
