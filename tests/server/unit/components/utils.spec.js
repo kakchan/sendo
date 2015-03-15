@@ -1,7 +1,7 @@
 'use strict';
 
 var should = require('should');
-var utils = require('../../../components/utils');
+var utils = require('../../../../server/components/utils');
 
 describe('Utils', function() {
   it('pad_zero should return correct value', function() {

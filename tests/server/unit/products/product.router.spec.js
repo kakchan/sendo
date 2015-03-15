@@ -2,12 +2,12 @@
 
 var should = require('should');
 var rewire = require('rewire');
-var ProductRouter = rewire("../../../admin/api/products/product.router");
+var ProductRouter = rewire("../../../../server/admin/api/products/product.router");
 var FakeAsync = require('../fake/FakeAsync');
 var FakeProductModel = require('../fake/FakeProductModel');
 var FakeFileSystem = require('../fake/FakeFileSystem');
 var sinon = require('sinon');
-var config = require("../../../config/environment");
+var config = require("../../../../server/config/environment");
 
 describe('Product Router', function() {
   beforeEach(function(done) {

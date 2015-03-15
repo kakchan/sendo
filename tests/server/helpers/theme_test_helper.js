@@ -1,7 +1,7 @@
 var async = require('async');
 var fs = require('fs-extra');
-var config = require('../../config/environment/index');
-var ThemeService = require('../../admin/api/themes/theme.service.js');
+var config = require('../../../server/config/environment/index');
+var ThemeService = require('../../../server/admin/api/themes/theme.service.js');
 
 var create_directory = function( path, done ) {
   fs.mkdirp( path, function( err ) {

@@ -124,21 +124,23 @@ describe('Admin Add Product Page View', function() {
 
     describe( "Upload Photo", function() {
       it('first uploaded photo will be the featured image', function() {
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
-        expect(this._edit_product_page.photoThumbnailContainerEl
+        var editProductPage = this._edit_product_page;
+        editProductPage.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_1.JPG");
+        var photoThumbnailContainerEl = editProductPage.photoThumbnailContainerEl;
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
+        expect(photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(0)
           .element(by.css(".is_featured")).isDisplayed()).toBe(true);
 
         // add one more photo
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
-        expect(this._edit_product_page.photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
-        expect(this._edit_product_page.photoThumbnailContainerEl
+        editProductPage.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_2.jpeg");
+        expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
+        expect(photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(0)
           .element(by.css(".is_featured")).isDisplayed()).toBe(true);
-        expect(this._edit_product_page.photoThumbnailContainerEl
+        expect(photoThumbnailContainerEl
           .all(by.css('.photo-thumbnail'))
           .get(1)
           .element(by.css(".is_featured")).isDisplayed()).toBe(false);
@@ -149,14 +151,14 @@ describe('Admin Add Product Page View', function() {
         expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(0);
 
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_1.JPG");
         expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
         expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-featured')).count()).toBe(1);
         expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-set-alt')).count()).toBe(1);
         expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-remove')).count()).toBe(1);
 
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_2.jpeg");
         expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(2);
         expect(photoThumbnailContainerEl.all(by.css('.photo-thumbnail-mark-as-featured')).count()).toBe(2);
@@ -169,11 +171,11 @@ describe('Admin Add Product Page View', function() {
         var photo_thumbnails = photoThumbnailContainerEl.all(by.css(".photo-thumbnail"));
 
         var uploadFileInputFieldEl = this._edit_product_page.uploadFileInputFieldEl;
-        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
-        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
-        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/green_apple.gif");
-        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/orange.gif");
-        uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/pear.gif");
+        uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_1.JPG");
+        uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_2.jpeg");
+        uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/green_apple.gif");
+        uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/orange.gif");
+        uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/pear.gif");
 
         var first_photo_thumbnail = photo_thumbnails.get(0);
         var third_photo_thumbnail = photo_thumbnails.get(2);
@@ -192,14 +194,14 @@ describe('Admin Add Product Page View', function() {
       });
 
       it('should delete photo when trash icon is clicked', function() {
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_1.JPG");
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_1.JPG");
         var photoThumbnailContainerEl = this._edit_product_page.photoThumbnailContainerEl;
         var photo_thumbnails = photoThumbnailContainerEl.all(by.css(".photo-thumbnail"));
         expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(photoThumbnailContainerEl.all(by.css("img.photo-thumbnail-image")).count()).toBe(1);
         expect(photo_thumbnails.count()).toBe(1);
 
-        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/e2e/test_files/products/nikon_camera_2.jpeg");
+        this._edit_product_page.uploadFileInputFieldEl.sendKeys(cwd + "/tests/test_files/products/nikon_camera_2.jpeg");
         expect(photoThumbnailContainerEl.isDisplayed()).toBe(true);
         expect(photo_thumbnails.count()).toBe(2);
 

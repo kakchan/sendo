@@ -1,6 +1,6 @@
 'use strict';
 
-var sample_products = require("../../../server/sample_data/sample_products");
+var sample_products = require("../../../../server/sample_data/sample_products");
 
 describe('Admin Products Page View', function() {
   beforeEach(function() {

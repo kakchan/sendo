@@ -5,7 +5,7 @@ describe('Home Page View', function() {
 
   beforeEach(function() {
     browser.get('/');
-    page = require('./home.po');
+    page = require('./home.po.js');
   });
 
   it('should include jumbotron with correct data', function() {

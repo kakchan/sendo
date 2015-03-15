@@ -89,7 +89,7 @@ var setup_file_directories = function() {
     } );
   }
   // copy dummy images
-  fs.copySync("./e2e/test_files/products", config.product_photo_path);
+  fs.copySync("./tests/test_files/products", config.product_photo_path);
 };
 
 var add_api_urls_to_config = function() {

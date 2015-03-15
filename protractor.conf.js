@@ -48,9 +48,9 @@ exports.config = {
         extensions: []
       },
       specs: [
-        'e2e/admin/products/admin_products.spec.js',
-        'e2e/admin/products/admin_add_product.spec.js',
-        'e2e/admin/products/admin_edit_product.spec.js'
+        'tests/e2e/admin/products/admin_products.spec.js',
+        'tests/e2e/admin/products/admin_add_product.spec.js',
+        'tests/e2e/admin/products/admin_edit_product.spec.js'
       ]
     },
     {
@@ -61,7 +61,7 @@ exports.config = {
         extensions: []
       },
       specs: [
-        'e2e/admin/login/admin_login.spec.js'
+        'tests/e2e/admin/login/admin_login.spec.js'
       ]
     }
   ],

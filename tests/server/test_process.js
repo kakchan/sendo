@@ -1,4 +1,4 @@
-var start_server = require('../start_server');
+var start_server = require('../../server/start_server');
 var _started = false;
 
 var start = function(done) {

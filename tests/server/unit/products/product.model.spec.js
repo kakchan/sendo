@@ -1,7 +1,7 @@
 'use strict';
 
 var should = require('should');
-var Product = require('../../../admin/api/products/product.model');
+var Product = require('../../../../server/admin/api/products/product.model');
 
 describe('Product Model', function() {
   beforeEach(function(done) {

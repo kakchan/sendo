@@ -1,10 +1,10 @@
 'use strict';
 var request = require("request");
-var config = require("../../../config/environment/index");
+var config = require("../../../../server/config/environment/index");
 var should = require('should');
 var test_helper = require("../../helpers/test_helper");
 var test_process = require("../../test_process");
-var sample_products = require("../../../sample_data/sample_products");
+var sample_products = require("../../../../server/sample_data/sample_products");
 
 describe('Integration Test - Product Router', function () {
   before(function (done) {
