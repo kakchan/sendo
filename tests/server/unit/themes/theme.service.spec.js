@@ -2,8 +2,8 @@ var should = require('should');
 var ThemeService = require("../../../../server/admin/api/themes/theme.service");
 var config = require("../../../../server/config/environment");
 var async = require('async');
-var test_helper = require('../../helpers/test_helper');
-var theme_test_helper = require('../../helpers/theme_test_helper');
+var test_helper = require('../../../helpers/test_helper');
+var theme_test_helper = require('../../../helpers/theme_test_helper');
 
 describe('Theme Service', function() {
   before(function( done ) {

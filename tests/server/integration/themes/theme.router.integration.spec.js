@@ -2,8 +2,8 @@
 
 var config = require("../../../../server/config/environment/index");
 var should = require('should');
-var test_helper = require("../../helpers/test_helper");
-var theme_test_helper = require('../../helpers/theme_test_helper');
+var test_helper = require("../../../helpers/test_helper");
+var theme_test_helper = require('../../../helpers/theme_test_helper');
 var test_process = require("../../test_process");
 var async = require('async');
 

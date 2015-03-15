@@ -1,4 +1,4 @@
-var config = require("../../../server/config/environment/index");
+var config = require("../../server/config/environment/index");
 var request = require("request");
 var should = require("should");
 

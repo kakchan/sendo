@@ -3,6 +3,8 @@
 
 'use strict';
 
+var admin_theme_on_prepare = require("./tests/e2e/admin/themes/admin_theme_on_prepare");
+
 exports.config = {
   // The timeout for each script run on the browser. This should be longer
   // than the maximum time your application needs to stabilize between tasks.
@@ -61,7 +63,8 @@ exports.config = {
         extensions: []
       },
       specs: [
-        'tests/e2e/admin/login/admin_login.spec.js'
+        'tests/e2e/admin/login/admin_login.spec.js',
+        'tests/e2e/admin/themes/admin_themes.spec.js'
       ]
     }
   ],
@@ -78,5 +81,9 @@ exports.config = {
   // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
+  },
+
+  onPrepare: function(done) {
+    admin_theme_on_prepare.init(done);
   }
 };

@@ -2,5 +2,9 @@
 
 angular.module('sendoApp')
   .controller('ThemesController', function ($scope) {
-    $scope.$parent.page_title = "Themes";
+    var init = function() {
+      $scope.$parent.page_title = CONFIG.APP_NAME + " | Themes";
+    };
+
+    init();
   });
