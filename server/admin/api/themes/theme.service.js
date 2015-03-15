@@ -12,6 +12,10 @@ var get_directory_list = function( path, get_directory_list_done ) {
     },
     // get directories
     function( files_or_directories, get_directories_done ) {
+      if ( files_or_directories === undefined ) {
+        get_directories_done(null, []);
+        return;
+      }
       async.map(files_or_directories, function( name, done ) {
         fs.stat( path + "/" + name, function( err, stat ) {
           done( null, { name: name, is_directory: stat.isDirectory() } );
