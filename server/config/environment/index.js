@@ -67,10 +67,7 @@ var setup_file_directories = function() {
   };
 
   var create_folder = function(path) {
-    if ( fs.ensureDirSync( path ) ) {
-      return;
-    }
-    fs.mkdirpSync(path);
+    fs.ensureDirSync( path );
   };
 
   var recreate_file_path = function( path ) {

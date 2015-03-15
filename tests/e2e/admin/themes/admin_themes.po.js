@@ -4,6 +4,7 @@ var AdminThemesPage = function() {
   this.page_container_el = element(by.css('.page-container'));
 
   this.page_title_el = this.page_container_el.element(by.css('.admin-page-title'));
+  this.result_list_container_el = this.page_container_el.element(by.css('.list-container'));
 };
 
 AdminThemesPage.prototype.visit = function() {

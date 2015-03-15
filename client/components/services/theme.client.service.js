@@ -6,5 +6,9 @@ angular.module('sendoApp')
         id: '@_id'
       },
       {
+        query: {
+          method: 'GET',
+          isArray: false
+        }
       } );
   } );

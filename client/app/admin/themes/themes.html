@@ -8,5 +8,11 @@
   </div>
 </div>
 <div class="admin-page-body">
-  Themes
+  <div class="list-container">
+    <div class="theme-list-row list-box" ng-click="theme_click($index)" ng-repeat="theme in themes">
+      <div class="theme-list-details list-box-details">
+        <div class="theme-list-product-title">{{theme.name}}</div>
+      </div>
+    </div>
+  </div>
 </div>
