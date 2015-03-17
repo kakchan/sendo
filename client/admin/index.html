@@ -24,7 +24,7 @@
 
     <!-- Add your site or application content here -->
     <div class="page">
-      <div ng-include="'components/navbar/navbar.html'"></div>
+      <div ng-include="'../components/navbar/navbar.html'"></div>
       <div class="page-container" ui-view=""></div>
     </div>
 
@@ -40,23 +40,23 @@
     </script>
 
     <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="../bower_components/es5-shim/es5-shim.js"></script>
+    <script src="../bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="../bower_components/angular-resource/angular-resource.js"></script>
+      <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="../bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,client}) app/app.js -->
-    <script src="app/app.js"></script>
+    <script src="../app/app.js"></script>
       <!-- injector:js -->
       <script src="app/admin/admin_routes.js"></script>
       <script src="app/admin/blog_posts/blog_posts.controller.js"></script>
@@ -71,8 +71,6 @@
       <script src="app/admin/settings/settings.controller.js"></script>
       <script src="app/admin/themes/themes.controller.js"></script>
       <script src="app/admin/users/users.controller.js"></script>
-      <script src="app/main/home.controller.js"></script>
-      <script src="app/main/home.js"></script>
       <script src="app/main/root.controller.js"></script>
       <script src="components/file_upload/file_upload.directive.js"></script>
       <script src="components/input_field/input_field.directive.js"></script>

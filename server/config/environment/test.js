@@ -14,5 +14,5 @@ module.exports = {
   },
 
   seedDB: true,
-  files_root_path: ".tmp/test"
+  files_root_path: process.cwd() + "/.tmp/test"
 };

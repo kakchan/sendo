@@ -42,7 +42,7 @@ var all = {
     }
   },
 
-  files_root_path: ".tmp",
+  files_root_path: process.cwd() + "/.tmp",
   max_results_in_page: 20
 };
 
@@ -85,6 +85,10 @@ var setup_file_directories = function() {
       create_folder(config[fn_name]);
     } );
   }
+
+  // copy default theme to environment folder
+  fs.copySync("./themes", config.themes_path);
+
   // copy dummy images
   fs.copySync("./tests/test_files/products", config.product_photo_path);
 };

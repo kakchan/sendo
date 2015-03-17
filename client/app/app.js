@@ -8,7 +8,7 @@ angular
   .module('sendoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router' ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/admin/products');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');

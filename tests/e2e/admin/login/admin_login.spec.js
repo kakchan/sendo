@@ -24,6 +24,8 @@ describe('Admin Login Page View', function() {
     this._login_page.loginButtonEl.click();
 
     expect(browser.getCurrentUrl()).toMatch(/\/admin\/products/);
+
+    this._login_page.logoutLinkEl.click();
   });
 
   it('should not go to products login_page if e-mail/password are invalid', function() {

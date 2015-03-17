@@ -14,14 +14,15 @@ module.exports = function(app) {
   app.use('/admin/api/themes', require('./admin/api/themes'));
   app.use('/admin/auth', require('./admin/auth'));
   app.use('/admin/general', require('./admin/general'));
+  require('./store.view.router')(app);
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(admin\/api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 
   // All other routes should redirect to the index.html
-  app.route('/*')
+  app.route('/admin/*')
     .get(function(req, res) {
-      res.sendfile(app.get('appPath') + '/index.html');
+      res.sendfile(app.get('appPath') + '/admin/index.html');
     });
 };

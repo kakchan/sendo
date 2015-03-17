@@ -22,7 +22,7 @@ describe('Admin Themes Page View', function() {
       expect(themes_page.visit_theme_store_button_el.isDisplayed()).toBe(true);
 
       // Themes list should show correctly
-      expect(themes_page.result_list_container_el.all(by.css('.theme-list-row')).count()).toBe(3);
+      expect(themes_page.result_list_container_el.all(by.css('.theme-list-row')).count()).toBe(4);
     } );
   } );
 } );
