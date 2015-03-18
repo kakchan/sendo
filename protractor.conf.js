@@ -66,6 +66,19 @@ exports.config = {
         'tests/e2e/admin/login/admin_login.spec.js',
         'tests/e2e/admin/themes/admin_themes.spec.js'
       ]
+    },
+
+    // Store Front
+    {
+      'browserName': 'chrome',
+      "chromeOptions": {
+        binary: "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome",
+        args: [],
+        extensions: []
+      },
+      specs: [
+        'tests/e2e/main/*.spec.js'
+      ]
     }
   ],
 

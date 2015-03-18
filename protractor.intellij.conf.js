@@ -27,7 +27,10 @@ exports.config = {
     'tests/e2e/admin/products/admin_edit_product.spec.js',
 
      // Themes
-    'tests/e2e/admin/themes/admin_themes.spec.js'
+    'tests/e2e/admin/themes/admin_themes.spec.js',
+
+    // Store Front
+    'tests/e2e/main/*.spec.js'
   ],
 
   // Patterns to exclude.

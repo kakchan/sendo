@@ -20,6 +20,7 @@ var all = {
   root: path.normalize(__dirname + '/../../..'),
 
   // Server port
+  host: process.env.HOST || "localhost",
   port: process.env.PORT || 9876,
 
   // Should we populate the DB with sample data?
