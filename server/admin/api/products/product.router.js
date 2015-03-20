@@ -1,4 +1,4 @@
-var Product = require('./product.model');
+var Product = require('../../models/product.model.js');
 var fs = require('fs');
 var config = require('../../../config/environment');
 var utils = require('../../../components/utils');

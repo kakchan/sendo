@@ -7,8 +7,8 @@
 var log = require("../components/log");
 
 var async = require('async');
-var User = require('../admin/api/user/user.model');
-var Product = require('../admin/api/products/product.model');
+var User = require('../admin/models/user.model');
+var Product = require('../admin/models/product.model');
 var sample_products = require("../sample_data/sample_products");
 
 var create_users = function( done ) {
