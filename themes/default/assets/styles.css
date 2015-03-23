@@ -1,3 +1,4 @@
+/* Collection */
 .collection-product-name {
   margin-top: 8px;
 }
@@ -18,5 +19,10 @@
 }
 
 .collection-product-image {
+  height: 100px;
+}
+
+/* Product */
+.product-thumbnail-image {
   height: 100px;
 }

@@ -58,18 +58,49 @@ var collection_endpoint = function(req, res) {
   } );
 };
 
-// products/:handle
+// products/:url_handle
 var products_endpoint = function(req, res) {
-  get_template_file( "product", function( err, file ){
-    var html = ejs.render(file, {}, {});
+  var url_handle = req.params.url_handle;
+  async.auto( {
+    template_file: function( get_template_file_done ) {
+      get_template_file("product", get_template_file_done);
+    },
+    product: function(get_product_done) {
+      Product
+        .findOne( {
+          url_handle: url_handle
+        } )
+        .exec(function(err, product) {
+          if ( err ) {
+            get_product_done( err );
+            return;
+          }
+
+          var featured_image_urls = product.images.filter( function( image ) {
+            return image.is_featured === true;
+          } );
+          if ( featured_image_urls && featured_image_urls.length > 0 ) {
+            product.featured_image_url = config.product_photo_uri + "/" + featured_image_urls[0].filename;
+          } else {
+            product.featured_image_url = "/assets/images/no_image.png";
+          }
+          get_product_done( null, product );
+        });
+    }
+  }, function( err, results ) {
+    var html = ejs.render( results.template_file, {
+      locals: {
+        product: results.product
+      }
+    } );
     res.send( html );
-  } );
+  });
 };
 
 module.exports = function(app) {
   var endpoints = {
     "/": home_endpoint,
-    "/products/:handle": products_endpoint,
+    "/products/:url_handle": products_endpoint,
     "/collection": collection_endpoint
   };
   for ( var endpoint_path in endpoints ) {
