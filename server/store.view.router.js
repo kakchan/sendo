@@ -7,7 +7,7 @@ var async = require('async');
 var Product = require('../server/admin/models/product.model');
 
 var get_template_file = function( name, done ) {
-  fs.readFile( config.themes_path + "/default/templates/" + name + ".ejs", { encoding: "utf8" }, done );
+  fs.readFile( config.themes_path + "/current/templates/" + name + ".ejs", { encoding: "utf8" }, done );
 };
 
 // home page

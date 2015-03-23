@@ -45,6 +45,10 @@ describe( 'Integration Test - Theme Router', function () {
       var expected_result = [
         {
           name: "Sendo Default Theme",
+          path: "current"
+        },
+        {
+          name: "Sendo Default Theme",
           path: "default"
         },
         {
@@ -62,7 +66,7 @@ describe( 'Integration Test - Theme Router', function () {
       ];
 
       test_helper.get_admin_themes( {}, function( err, resp, json ) {
-        json.themes_info.length.should.equal( 4 );
+        json.themes_info.length.should.equal( expected_result.length );
         json.themes_info.should.eql( expected_result );
         done();
       } );

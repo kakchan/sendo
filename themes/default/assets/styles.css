@@ -1,0 +1,15 @@
+.collection-product-name {
+  margin-top: 8px;
+}
+
+.collection-product-details {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.collection-product-image {
+  height: 100px;
+}

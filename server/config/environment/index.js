@@ -56,7 +56,10 @@ var config = _.merge(
 // TODO: this method need to be moved
 var setup_file_directories = function() {
   // upload paths
-  config.product_photo_uri = '/uploads/photos/products';
+  config.uploads_uri = "/uploads";
+  config.product_photo_uri = config.uploads_uri + '/photos/products';
+
+  config.uploads_path = config.files_root_path + config.uploads_uri;
   config.product_photo_path = config.files_root_path + config.product_photo_uri;
 
   config.themes_path = config.files_root_path + "/themes";
@@ -92,6 +95,13 @@ var setup_file_directories = function() {
 
   // copy dummy images
   fs.copySync("./tests/test_files/products", config.product_photo_path);
+
+
+  var current_theme_path = config.files_root_path + "/themes/current";
+  // set current theme
+  if ( !fs.existsSync(current_theme_path) ){
+    fs.symlinkSync(config.files_root_path + "/themes/default", config.files_root_path + "/themes/current");
+  }
 };
 
 var add_api_urls_to_config = function() {

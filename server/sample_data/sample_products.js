@@ -25,6 +25,34 @@ var create_sample_products = function() {
           is_featured: false
         }
       ];
+    } else if ( i === 1 ) {
+      product_data.images = [
+        {
+          filename: "green_apple.gif",
+          size: 12345,
+          is_featured: true
+        },
+        {
+          filename: "Orange.gif",
+          size: 12345,
+          is_featured: false
+        },
+        {
+          filename: "Pear.gif",
+          size: 12345,
+          is_featured: false
+        },
+        {
+          filename: "red_apple.gif",
+          size: 12345,
+          is_featured: false
+        },
+        {
+          filename: "Strawberry.gif",
+          size: 12345,
+          is_featured: false
+        }
+      ]
     }
     products.push(product_data );
   }

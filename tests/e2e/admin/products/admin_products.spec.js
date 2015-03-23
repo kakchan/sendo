@@ -57,6 +57,8 @@ describe('Admin Products Page View', function() {
           if (index === 0) {
             // display feature image if there is one
             expect( image_el.getAttribute("src") ).toMatch( "/uploads/photos/products/nikon_camera_1.JPG" );
+          } else if ( index === 1 ) {
+            expect( image_el.getAttribute("src") ).toMatch( "/uploads/photos/products/green_apple.gif" );
           } else {
             // if no images in the product, should display no_image image
             expect( image_el.getAttribute("src") ).toMatch( "/assets/images/no_image.png" );

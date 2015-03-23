@@ -31,6 +31,7 @@ describe('Theme Service', function() {
     it("should return a list of directories", function(done) {
       ThemeService.get_directory_list(config.themes_path, function( err, directories ) {
         var expected_directory_result = [
+          { name: "current" },
           { name: "default" },
           { name: "theme_1" },
           { name: "theme_2" },
@@ -73,6 +74,10 @@ describe('Theme Service', function() {
   describe( "get_themes_info_by_theme_root_dir", function() {
     it( "should return all theme information within the directory", function( done ) {
       var expected_result = [
+        {
+          name: "Sendo Default Theme",
+          path: "current"
+        },
         {
           name: "Sendo Default Theme",
           path: "default"
