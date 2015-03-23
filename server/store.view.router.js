@@ -58,7 +58,7 @@ var collection_endpoint = function(req, res) {
   } );
 };
 
-// products/{product_name}
+// products/:handle
 var products_endpoint = function(req, res) {
   get_template_file( "product", function( err, file ){
     var html = ejs.render(file, {}, {});
@@ -69,7 +69,7 @@ var products_endpoint = function(req, res) {
 module.exports = function(app) {
   var endpoints = {
     "/": home_endpoint,
-    "/products": products_endpoint,
+    "/products/:handle": products_endpoint,
     "/collection": collection_endpoint
   };
   for ( var endpoint_path in endpoints ) {

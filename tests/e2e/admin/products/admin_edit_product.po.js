@@ -25,6 +25,9 @@ var AdminAddProductPage = function() {
   this.metaDescriptionInputFieldEl = this.metaDescriptionFieldEl.element(by.id('meta_description'));
   this.metaDescriptionFieldCharacterCountLabelEl = this.metaDescriptionFieldEl.element(by.css(".input-field-chars-count"));
 
+  this.urlHandleContainerEl = this.page_container_el.element(by.css("DIV[element-id='url_handle']"));
+  this.urlHandleFieldEl = this.urlHandleContainerEl.element(by.css(".url-handle-input-field-form-control"));
+
   this.validationMessageEl = this.page_container_el.element(by.css('.validation-message'));
 
   this.saveButtonEl = this.page_container_el.element(by.css('.btn-save'));

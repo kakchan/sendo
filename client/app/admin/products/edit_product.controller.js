@@ -1,11 +1,19 @@
 'use strict';
 
+var convert_to_url_handle_text = function( text ) {
+  if ( !text ) { return ""; }
+  return text.replace( /[^a-zA-Z0-9]/g, "-").toLowerCase();
+};
+
 angular.module('sendoApp')
   .controller('EditProductController', function ($scope, $stateParams, $location, Product) {
+    $scope.auto_url_handle = true;
+
     var init = function() {
       $scope.product = { images: [] };
       var product_id = $stateParams.product_id;
       if ( product_id ) {
+        $scope.auto_url_handle = false;
         $scope.page_name = "Edit Product";
         // load product details
         $scope.product = Product.get({ id: product_id });
@@ -36,6 +44,13 @@ angular.module('sendoApp')
         callback && callback();
       });
     };
+
+    /* Watchers */
+    $scope.$watch( "product.title", function( product_title ) {
+      if ( $scope.auto_url_handle ) {
+        $scope.product.url_handle = convert_to_url_handle_text( product_title );
+      }
+    } );
 
     /* Upload File directive Handlers */
     $scope.on_file_delete = function(photo, callback) {

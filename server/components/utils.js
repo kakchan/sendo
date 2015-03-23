@@ -1,4 +1,9 @@
 module.exports = {
+  convert_to_url_handle_text: function( text ) {
+    if ( !text ) { return ""; }
+    return text.replace( /[^a-zA-Z0-9]/g, "-").toLowerCase();
+  },
+
   error_handler: function( err ) {
     var messages = [];
     if ( err && err.errors ) {

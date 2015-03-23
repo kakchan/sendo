@@ -67,10 +67,17 @@ var setup_file_directories = function() {
   config.log_files_root_path = config.files_root_path + "/logs";
 
   var remove_folder = function(path) {
-    fs.removeSync( path );
+    try {
+      fs.removeSync( path );
+    } catch( ex ) {
+      console.log( ex );
+    }
   };
 
   var create_folder = function(path) {
+    if ( fs.existsSync( path ) ) {
+      return;
+    }
     fs.ensureDirSync( path );
   };
 

@@ -8,6 +8,13 @@
   text-align: center;
   margin-top: 10px;
   margin-bottom:10px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.collection-product-details:hover {
+  color: #888;
 }
 
 .collection-product-image {

@@ -37,6 +37,9 @@ describe('Admin Add Product Page View', function() {
         // should contain Meta Description field
         expect(this._edit_product_page.metaDescriptionInputFieldEl.isDisplayed()).toBe(true);
 
+        // should contain URL Handle
+        expect(this._edit_product_page.urlHandleFieldEl.isDisplayed()).toBe(true);
+
         // should contain Save button
         expect(this._edit_product_page.saveButtonEl.isDisplayed()).toBe(true);
       });
@@ -78,6 +81,28 @@ describe('Admin Add Product Page View', function() {
           expect(browser.getTitle()).toEqual('Sendo | Products');
           expect(this._products_page.product_row_els.count()).toBe(this._products_page.product_count);
         });
+      });
+    } );
+
+    describe( "URL Handle field", function() {
+      it("should auto update URL handle field when product title is changed", function() {
+        this._edit_product_page.titleFieldEl.sendKeys("Product 001");
+        expect(this._edit_product_page.urlHandleFieldEl.getAttribute('value')).toBe("product-001");
+      });
+
+      it('should not auto update if url handle field has been changed earlier', function() {
+        var editProductPage = this._edit_product_page;
+        editProductPage.titleFieldEl.sendKeys("Product 001");
+        expect(editProductPage.urlHandleFieldEl.getAttribute('value')).toBe("product-001");
+
+        editProductPage.urlHandleFieldEl.clear();
+        editProductPage.urlHandleFieldEl.sendKeys("abc-1234");
+        expect(editProductPage.urlHandleFieldEl.getAttribute('value')).toBe("abc-1234");
+
+        editProductPage.titleFieldEl.clear();
+        editProductPage.titleFieldEl.sendKeys("Product 1234");
+        expect(editProductPage.titleFieldEl.getAttribute('value')).toBe( "Product 1234" );
+        expect(editProductPage.urlHandleFieldEl.getAttribute('value')).toBe("abc-1234");
       });
     } );
 

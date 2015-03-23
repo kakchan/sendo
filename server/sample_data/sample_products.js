@@ -1,4 +1,5 @@
 var utils = require("../components/utils");
+
 var create_sample_products = function() {
   var no_of_products = 205;
   var products = [];
@@ -10,7 +11,8 @@ var create_sample_products = function() {
       description: "Product Description " + product_id,
       page_title: "Product Page Title " + product_id,
       meta_description: "Product Meta Description " + product_id,
-      images: []
+      images: [],
+      url_handle: utils.convert_to_url_handle_text("Product " + product_id)
     };
     if ( i === 0 ) {
       product_data.images = [

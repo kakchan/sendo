@@ -2,10 +2,10 @@
 <h1>Collection</h1>
 
 <% for (var i=0; i<products.length; i++) {%>
-<div class="collection-product-details">
+<a href="/products/<%= products[i].url_handle %>" class="collection-product-details">
   <div class="collection-product-image-container">
     <img class="collection-product-image" src="<%= products[i].featured_image_url %>"/>
   </div>
   <div class="collection-product-name"><%= products[i].title %></div>
-</div>
+</a>
 <% } %>

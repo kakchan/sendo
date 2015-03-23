@@ -1,0 +1,30 @@
+$disabled_text: #ccc;
+
+.url-handle-control-container {
+  .url-handle-placeholder {
+    position: absolute;
+    padding: 8px 5px 7px 12px;
+    color: $disabled_text;
+  }
+
+  .auto-url-handle {
+    color: $disabled_text;
+  }
+
+  .url-handle-input-field-form-control {
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      color: $disabled_text;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $disabled_text;
+      opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color:    $disabled_text;
+      opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color:    $disabled_text;
+    }
+  }
+}

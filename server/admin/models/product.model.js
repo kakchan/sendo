@@ -15,7 +15,7 @@ var ProductSchema = new Schema({
   description: String,
   page_title: String,
   meta_description: String,
-  handle: String,
+  url_handle: { type: String, index: true },
   images: [ProductImage],
   created_at: Date,
   updated_at: Date
