@@ -1,11 +1,15 @@
 'use strict';
-var config = require("../../../server/config/environment");
 var utils = require("../../../server/components/utils");
 
 describe('Collection Page', function() {
+  beforeEach( function() {
+    this._collection_page = require("./collection_page.po");
+    this._collection_page.visit();
+  } );
+
   it( "should display correct", function(done) {
     var web_driver = browser.driver;
-    web_driver.get('http://' + config.host + ':' + config.port + "/collection" );
+
     this.page_header_el = web_driver.findElement(by.css('h1'));
     expect(this.page_header_el.getText()).toEqual("Collection");
 
