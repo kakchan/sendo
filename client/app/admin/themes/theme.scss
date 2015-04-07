@@ -1,0 +1,16 @@
+.theme-list-row {
+  padding: 20px 0;
+
+  .theme-list-product-title {
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .theme-list-buttons-container {
+    display: none;
+  }
+
+  &:hover .theme-list-buttons-container {
+    display: inline-block;
+  }
+}

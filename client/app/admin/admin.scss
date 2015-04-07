@@ -32,6 +32,17 @@ A:hover, A:focus {
   }
 }
 
+.list-button {
+  padding: 0 10px;
+  cursor: pointer;
+  &:hover {
+    color: #999;
+  }
+  &:before {
+    margin-right: 5px;
+  }
+}
+
 .validation-message {
   background-color: #f2dede;
   padding: 10px;

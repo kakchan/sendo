@@ -26,7 +26,7 @@ var get_directory_list = function( path, get_directory_list_done ) {
           return;
         }
         var directories = results.filter( function( result ) {
-          return result.is_directory;
+          return result.is_directory && result.name !== "current";
         });
         get_directories_done( null, directories );
       } );
